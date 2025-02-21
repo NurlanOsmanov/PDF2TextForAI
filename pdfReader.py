@@ -9,7 +9,7 @@ def TextClear(text):
         if len(lines[i]) == 0:
             temp_text += "\n"
             continue
-        if FindTopic(lines[i]): print("la\n\n")
+        if FindTopic(lines[i]): print("<-----------\n\n")
         if lines[i][-1] == '-':
             lines[i] = lines[i][:-1]
         else:
@@ -39,8 +39,8 @@ def FindTopic(text):
 #C:\Users\nurla\OneDrive\Masaüstü\Python\PDF readers\PDFs\az_tarixi_6.pdf
 # 200 normaldi mence, neqeder artsa o qedere yavas isleyir proqram
 startPage = 9
-endPage = 11
-deqiqlik = 200
+endPage = 12
+deqiqlik = 400
 images = convert_from_path("PDFs/az_tarixi_6.pdf", deqiqlik, first_page= startPage, last_page=endPage)
 print(len(images))
 
@@ -48,10 +48,12 @@ fullText = ' '
 
 for i, image in enumerate(images):
     text = pytesseract.image_to_string(image, lang="aze")
+    f = open(f"texts/_az_tarixi_6_original_page{i + startPage}.txt", "w", encoding="utf-8")
+    f.write(text)
     text = TextClear(text)
     fullText += '\n' + text
-    f = open(f"texts/_az_tarixi_6_page{i + startPage}.txt", "w", encoding="utf-8")
-    f.write(text)
+    a = open(f"texts/_az_tarixi_6_page{i + startPage}.txt", "w", encoding="utf-8")
+    a.write(text)
     
 f = open(f"texts/az_tarixi_6_full.txt", "w", encoding="utf-8")
 f.write(fullText)
