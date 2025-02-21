@@ -18,7 +18,12 @@ sudo apt install tesseract-ocr tesseract-ocr-aze
 Çevriləcək pdf faylını PDFs qovluğuna at, proqramı işə sal və gözlə. 
 
 For MAC:
+
+
 brew install poppler
 
+
 pip3 install pdf2image
+
+
 pip3 install pytesseract
