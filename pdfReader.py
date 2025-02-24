@@ -1,64 +1,97 @@
 import pytesseract
-from pdf2image import convert_from_path
+import pdf2image as p2i
+import PyPDF2
+import imageClipper as ic
+import cv2
 
-#Setrleri birlesdirib
-def TextClear(text):
-    temp_text = ''
-    lines = text.split("\n")
-    for i in range(0, len(lines) - 1):
-        if len(lines[i]) == 0:
-            temp_text += "\n"
-            continue
-        if FindTopic(lines[i]): print("la\n\n")
-        if lines[i][-1] == '-':
-            lines[i] = lines[i][:-1]
-        else:
-            lines[i] += " "
-        temp_text += lines[i]
-    print(temp_text)
-    return temp_text
+
+
+#-------------------Convertors----------------------
+
+def WritePDFtoTXT_OCR(images, name, mode, clipper: bool, x_accuracy:int,y_accuracy:int):
+    fullText = " "
+    for i,image in enumerate(images):
+        print(f"Page {i} is converting...")
+        #lazimsiz boxlari silir
+        if(clipper):
+            image = ic.ClearBoxes(ic.ConverToMatlike(image), f"PNGs/test_png{startPage + i}.png", accuracity_x=x_accuracy,accuracity_y=y_accuracy)
+            image = ic.ConverToImage(image)            
+        
+        text = pytesseract.image_to_string(image, lang="aze", config=mode)
+        #text = TextClear(text)
+        fullText += '\n' + text
+        #f = open(f"{name}_page{i + startPage}.txt", "w", encoding="utf-8")
+        #f.write(text)
+        print(f"Page {i} converted")
+    f = open(name, "w", encoding="utf-8")
+    f.write(fullText)    
+    return fullText
     
-def FindTopic(text):
-    founded = False
-    beginsWithNumner = False
-    if(len(text) > 0 and text[0] >= '0' and text[0] <= '9'): 
-        beginsWithNumner = True
-    if(beginsWithNumner):
-        temp_text = text.split(".")[0] 
-        print(temp_text + " - " + temp_text[-1])
-        #Burani deyismek lazim olacaq
-        if(len(temp_text) > 0 and temp_text[-1] >= '0' and temp_text[-1] <= '9'):
-            founded = True
-            print("--> " + text)
-    return founded
+def WritePDFtoTXT_noOCR(pdf_path, output_txt):
+    # Open the PDF file in read-binary mode
+    with open(pdf_path, 'rb') as pdf_file:
+        # Create a PdfReader object instead of PdfFileReader
+        pdf_reader = PyPDF2.PdfReader(pdf_file)
+        # Initialize an empty string to store the text
+        text = ''
+        for page_num in range(len(pdf_reader.pages)):
+            page = pdf_reader.pages[page_num]
+            text += page.extract_text()
 
+    # Write the extracted text to a text file
+    with open(output_txt, 'w', encoding='utf-8') as txt_file:
+        txt_file.write(text)
+    print("PDF converted to text successfully!")
+    return text
 
-
+def WritePDFtoTXT(pdfPath:str,outputName:str,ocrmode:bool, dpi:int, startPage:int, endPage:int, mode:str , clipper: bool, x_accuracy = 50, y_accuracy = 50):
+    if ocrmode:
+        images = p2i.convert_from_path(pdfPath, dpi, first_page= startPage, last_page=endPage)
+        return WritePDFtoTXT_OCR(images, outputName, mode, clipper, x_accuracy, y_accuracy)
+    else:
+        return WritePDFtoTXT_noOCR(pdfPath, outputName)
+    
+    
+    
+def SavePNGs(images,name):
+    for i, image in enumerate(images):
+        image.save(f"PNGs/{name}{i}.png", "PNG")
+    print("Images converted to PNGs!")
+    
+        
+def SavePNG(image, name):
+    image.save(f"PNGs/{name}", "PNG")
+    print("Image converted to PNG!")
+    
 #---------------------------------------------------------
 
-#C:\Users\nurla\OneDrive\Masaüstü\Python\PDF readers\PDFs\az_tarixi_6.pdf
 # 200 normaldi mence, neqeder artsa o qedere yavas isleyir proqram
-startPage = 9
-endPage = 11
-deqiqlik = 200
-images = convert_from_path("PDFs/az_tarixi_6.pdf", deqiqlik, first_page= startPage, last_page=endPage)
-print(len(images))
+#OCR modlari: https://pyimagesearch.com/2021/11/15/tesseract-page-segmentation-modes-psms-explained-how-to-improve-your-ocr-accuracy/
+pdfPath = "PDFs/az_tarixi_6.pdf"
+startPage = 10
+endPage = 13
 
-fullText = ' '
+useOCR = True
+deqiqlik = 400
+imageClipper = False
 
-for i, image in enumerate(images):
-    text = pytesseract.image_to_string(image, lang="aze")
-    text = TextClear(text)
-    fullText += '\n' + text
-    f = open(f"texts/_az_tarixi_6_page{i + startPage}.txt", "w", encoding="utf-8")
-    f.write(text)
+
+#---------Main-----------------------------------
+
+#print("Converting...")
+
+#WritePDFtoTXT(pdfPath,"Tests/misalOCR.txt",useOCR,deqiqlik,startPage,endPage, mode="--psm 3",clipper = imageClipper)
+
+# image = convert_from_path(pdfPath,deqiqlik,first_page=startPage,last_page=endPage)
+# SavePNG(image[0], "az_tarixi_6.png")
+
+#print(f"Bu qeder sehife var: {len(images)}")
+
+#SavePNG(images[0], "az_tarixi_6")
+
     
-f = open(f"texts/az_tarixi_6_full.txt", "w", encoding="utf-8")
-f.write(fullText)
-
-print("OCR tamamlandı! Mətn çıxarıldı.")
-
-
+#f = open(f"texts/az_tarixi_6_full.txt", "w", encoding="utf-8")
+#f.write(fullText)
 
 
 
