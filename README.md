@@ -31,4 +31,4 @@ pip3 install pdf2image
 pip3 install pytesseract
 
 
-Çevriləcək pdf faylını PDFs qovluğuna at, proqramı işə sal və gözlə.
+Çevriləcək pdf faylını PDFs qovluğuna at, proqramıda (customProgram.py) dəyişkənləri qeyd et və run et.
