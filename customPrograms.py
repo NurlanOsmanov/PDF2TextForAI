@@ -6,15 +6,20 @@ def TextClear(text):
     temp_text = ''
     lines = text.split("\n")
     for i in range(0, len(lines) - 1):
-        if len(lines[i]) == 0:
-            temp_text += "\n"
-            continue
+        # if len(lines[i]) == 0:
+            # temp_text += "\n"
+            # continue
         if FindTopic(lines[i]): print("la\n\n")
         if lines[i][-1] == '-':
             lines[i] = lines[i][:-1]
         else:
             lines[i] += " "
-        temp_text += lines[i]
+
+        if (lines[i][0] in ['*','x']):
+            print("ok")
+            # Kamalin kodu
+        else:
+            temp_text += lines[i]
     print(temp_text)
     return temp_text
     
@@ -42,7 +47,7 @@ def FindTopic(text):
 
 pdfPath = "PDFs/az_tarixi_6.pdf"
 startPage = 10
-endPage = 14
+endPage = 13
 
 useOCR = True
 deqiqlik = 400

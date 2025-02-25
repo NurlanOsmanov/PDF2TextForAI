@@ -4,7 +4,7 @@
 Tarix mənbələr üzrə insanın meydana gəl-
 məsini və insan cəmiyyətinin inkişafını öyrənir.
 
-Azərbaycanın qədim tarixi arxeolofi (maddi
+Azərbaycanın qədim tarixi агхеојој1 (maddi
 mənbələr) və yazılı mənbələr əsasında araşdırı-
 lır. Baş vermiş tarixi hadisələrin zamanını bil-
 mədən ölkəmizin tarixi barədə xronolofi şəkildə
@@ -22,7 +22,7 @@ də indiki dövrə doğru aparılır. Başlanğıc nöq-
 təsinə qədər hadisələrdən danışarkən “eradan
 (yaxud miladdan) əvvəl” sözləri işlədilir.
 
-£ Era — il hesabının başlandığı zaman, tarixin başlanğıcı
+* Era – 1 hesabının başlandığı zaman, tarixin başlanğıcı
 
 Hazırda bir çox dünya ölkələri kimi Azər-
 baycan Respublikasında da miladi təqvimdən
@@ -62,7 +62,7 @@ mışdır. İnsan cəmiyyətinin tarixində ibtidai ic-
 ma quruluşu çox uzun bir dövrü əhatə edir.
 Alimlər ibtidai icma quruluşunu əmək alətlə-
 rinin hazırlandığı materiala görə şərti olaraq
-üç dövrə bölürlər: Daş dövrü, Tunc dövrü və
+üç dövrə bölürlər: Daş dövrü, Tunc dövrü сә
 
 Dəmir dövrü. İbtidai icma quruluşunun ən qə-
 dim dövrü Daş dövrüdür. Daş dövrünün inki-
@@ -84,14 +84,14 @@ bacarırdılar.
 
 Qədim insanlar çayların, göllərin kənarın-
 da, şirin su qaynaqlarına yaxın yerləşən ma-
-ğaralarda məskən salırdılar. Təbii mağaralar
+багајагда məskən salırdılar. Təbii mağaralar
 insanları soyuqdan, küləkdən, yağışdan qoru-
 yurdu.
 
 Təbiət hadisələri və vəhşi heyvanların hü-
 cumları qarşısında aciz qalmış ibtidai insanlar
 
-x Eneolit — “eneos” latınca mis, “litos” yunanca daş deməkdir.
+* Eneolit — “eneos” latınca mis, “litos” yunanca daş deməkdir.
 x Paleolit — “paleo” latınca qədim, “litos” yunanca daş deməkdir.
 
 kortəbii şəkildə birləşir, dəstələr və kiçik qrup-
@@ -130,14 +130,3 @@ yanması nəticəsində əmələ gəlmiş təbii oddan
 istifadə edirdilər. Onlar soyuqdan, vəhşi hey-
 vanlardan qorunmaq, ovladıqları heyvanların
 ətini bişirmək üçün odu sönməyə qoymurdular.
-
-Mənimsəmə təsərrüfatı
-İnsanların bu ilkin vərdişləri, əmək alətləri
-hazırlaması onları heyvanlar aləmindən
-ayırırdı.
-il
-y .
-ı
-İ
--.
-)
