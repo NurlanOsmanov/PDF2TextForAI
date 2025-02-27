@@ -9,8 +9,9 @@ def TextClear(text):
         if len(lines[i]) == 0:
             #temp_text += "\n"
             continue
-        if FindTopic(lines[i]): temp_text += "\n"
-        
+        if FindTopic(lines[i]): 
+            temp_text += "\n"
+            print("->>>>" + lines[i])
         if lines[i][-1] == '-':
             lines[i] = lines[i][:-1]
         else:
@@ -20,21 +21,25 @@ def TextClear(text):
             continue
         else:
             temp_text += lines[i]
-    print(temp_text)
+        print(lines[i])
+    print("-------------------------------------------------\n" + temp_text)
     return temp_text
     
 def FindTopic(text):
     founded = False
     if(len(text) > 0 and text[0] >= '0' and text[0] <= '9'):
         temp_text = text.split(".")
+
+
+        if (len(temp_text) != 2 or temp_text[0] is None or temp_text[1] is None): return False
+
         number = temp_text[0]
         topicName = temp_text[1]
-        if (len(topicName) == 0 or len(number) == 0): return False
-        
+        if(len(topicName) == 1): return False
         #eger noqteden evvel gelen reqemdise, ve ondan sonra gelenler boyukdurse
         if(number[-1] >= '0' and number[-1] <= '9'):
-            for letter in topicName:
-                if(letter >= "A" and letter <= "Z" or letter in ['Ö','Ə','Ü']):
+            for i,letter in enumerate(topicName):
+                if(letter >= "A" and letter <= "Z" or letter in ['Ö','Ə','Ü','İ',' ']):
                     founded = True
                     continue
                 else:
@@ -54,7 +59,7 @@ def FindTopic(text):
 
 pdfPath = "PDFs/az_tarixi_6.pdf"
 startPage = 10
-endPage = 16
+endPage = 32
 
 useOCR = True
 deqiqlik = 400

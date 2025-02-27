@@ -45,13 +45,34 @@ def ConverToImage(opencv_image: cv2.typing.MatLike):
     pil_image = PIL.Image.fromarray(rgb_image)
     return pil_image
 
+def MakeBinary(image: cv2.typing.MatLike, threshold: int=250):
+
+    # Şəkildəki ağ rəngli pikselləri tap
+    white_mask = cv2.inRange(image, np.array([threshold, threshold, threshold]), np.array([255, 255, 255]))
+
+    # Ağ olmayan pikselləri qara et
+    result = np.zeros_like(image)  # Bütün pikselləri qara et
+    result[white_mask == 255] = [255, 255, 255]  # Ağ pikselləri saxla
+
+
+    # Ağ olmayan pikselləri qara et
+    result = np.zeros_like(image)  # Bütün pikselləri qara et
+    result[white_mask == 255] = [255, 255, 255]  # Ağ pikselləri saxla
+
+    # cv2.imshow('Result', result)
+    # cv2.waitKey(0)
+    # cv2.destroyAllWindows()
+
+    return result
+
+
 def ClearBoxes(image: cv2.typing.MatLike, name: str, accuracity_x: int = 50,  accuracity_y: int= 50):
-    opencv_image = image
+    opencv_image = MakeBinary(image, 215)
     
     gray = cv2.cvtColor(opencv_image, cv2.COLOR_BGR2GRAY)
 
-    opencv_image = gray
 
+    opencv_image = gray
     # Kenarları belirlemek için Canny Edge Detection kullan
     edges = cv2.Canny(gray, 50, 150)
     #i=datetime.now().microsecond
@@ -133,5 +154,7 @@ def filter_text_by_size_range(image, size_min, size_max):
 
 #image = ClearBoxes(image=cv2.imread("PNGs/az_tarixi_6.png"),name="Tests/testpng.png",accuracity_x=100,accuracity_y=100)
 #print(GetTextSizes_Gray(image=image))
+# image = cv2.imread("PNGs/az_tarixi_6.png")
+# MakeBinary(image=image)
 
 #cv2.imwrite( "Tests/testclearedpng.png",filter_text_by_size_range(image, 1,50))
