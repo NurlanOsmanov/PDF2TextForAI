@@ -55,10 +55,6 @@ def MakeBinary(image: cv2.typing.MatLike, threshold: int=250):
     result[white_mask == 255] = [255, 255, 255]  # Ağ pikselləri saxla
 
 
-    # Ağ olmayan pikselləri qara et
-    result = np.zeros_like(image)  # Bütün pikselləri qara et
-    result[white_mask == 255] = [255, 255, 255]  # Ağ pikselləri saxla
-
     # cv2.imshow('Result', result)
     # cv2.waitKey(0)
     # cv2.destroyAllWindows()
@@ -66,18 +62,21 @@ def MakeBinary(image: cv2.typing.MatLike, threshold: int=250):
     return result
 
 
-def ClearBoxes(image: cv2.typing.MatLike, name: str, accuracity_x: int = 50,  accuracity_y: int= 50):
-    opencv_image = MakeBinary(image, 215)
-    
-    gray = cv2.cvtColor(opencv_image, cv2.COLOR_BGR2GRAY)
+def ClearBoxes(image: cv2.typing.MatLike, name: str, accuracity_x: int = 50,  accuracity_y: int= 50, repate: bool=False):
+    try:
+        opencv_image = MakeBinary(image, 220)
+        gray = cv2.cvtColor(opencv_image, cv2.COLOR_BGR2GRAY)
+        opencv_image = gray 
+    except:
+        opencv_image = image
+        gray = opencv_image
 
 
-    opencv_image = gray
     # Kenarları belirlemek için Canny Edge Detection kullan
-    edges = cv2.Canny(gray, 50, 150)
-    #i=datetime.now().microsecond
-    #print(i)
-    #cv2.imwrite(f"PNGs/az_tarixi_6_edge{i}.png", edges)
+    edges = cv2.Canny(gray, 150, 200)
+    # i=datetime.now().microsecond
+    # print(i)
+    # cv2.imwrite(f"PNGs/az_tarixi_6_edge{i}.png", edges)
     # Konturları bul
     contours, _ = cv2.findContours(edges, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
 
@@ -94,9 +93,13 @@ def ClearBoxes(image: cv2.typing.MatLike, name: str, accuracity_x: int = 50,  ac
 
             if text.strip():  # İçinde yazı varsa
                 cv2.rectangle(opencv_image, (x, y), (x+w, y+h), (255, 255, 255), -1)
+                # print(text)
                 
-    opencv_image = cv2.equalizeHist(opencv_image)
-    cv2.imwrite(filename=name,img =opencv_image)
+    if(repate):
+        opencv_image = ClearBoxes(opencv_image,name,accuracity_x * 0.9,accuracity_y*0.9,False)
+    else:
+        cv2.imwrite(filename=name,img =opencv_image)
+        
     return opencv_image
 
 #sehifedeki hundurlukleri olcur.
@@ -152,7 +155,10 @@ def filter_text_by_size_range(image, size_min, size_max):
 
 #--------------main-----------------
 
-#image = ClearBoxes(image=cv2.imread("PNGs/az_tarixi_6.png"),name="Tests/testpng.png",accuracity_x=100,accuracity_y=100)
+# image = ClearBoxes(image=cv2.imread("PNGs/az_tarixi_6.png"),name="Tests/testpng.png",accuracity_x=75,accuracity_y=75, repate=True)
+# cv2.imshow('Result',image)
+# cv2.waitKey(0)
+# cv2.destroyAllWindows()
 #print(GetTextSizes_Gray(image=image))
 # image = cv2.imread("PNGs/az_tarixi_6.png")
 # MakeBinary(image=image)

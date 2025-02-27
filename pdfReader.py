@@ -8,13 +8,13 @@ import cv2
 
 #-------------------Convertors----------------------
 
-def WritePDFtoTXT_OCR(images, name, mode, clipper: bool, x_accuracy:int,y_accuracy:int):
+def WritePDFtoTXT_OCR(images, name, mode, clipper: bool, x_accuracy:int,y_accuracy:int, repate: bool=False):
     fullText = " "
     for i,image in enumerate(images):
         print(f"Page {i} is converting...")
         #lazimsiz boxlari silir
         if(clipper):
-            image = ic.ClearBoxes(ic.ConverToMatlike(image), f"PNGs/test_png{startPage + i}.png", accuracity_x=x_accuracy,accuracity_y=y_accuracy)
+            image = ic.ClearBoxes(ic.ConverToMatlike(image), f"PNGs/test_png{startPage + i}.png", accuracity_x=x_accuracy,accuracity_y=y_accuracy, repate=repate)
             image = ic.ConverToImage(image)            
         
         text = pytesseract.image_to_string(image, lang="aze", config=mode)
@@ -44,10 +44,10 @@ def WritePDFtoTXT_noOCR(pdf_path, output_txt):
     print("PDF converted to text successfully!")
     return text
 
-def WritePDFtoTXT(pdfPath:str,outputName:str,ocrmode:bool, dpi:int, startPage:int, endPage:int, mode:str , clipper: bool, x_accuracy = 50, y_accuracy = 50):
+def WritePDFtoTXT(pdfPath:str,outputName:str,ocrmode:bool, dpi:int, startPage:int, endPage:int, mode:str , clipper: bool, x_accuracy = 50, y_accuracy = 50, repate:bool=False):
     if ocrmode:
         images = p2i.convert_from_path(pdfPath, dpi, first_page= startPage, last_page=endPage)
-        return WritePDFtoTXT_OCR(images, outputName, mode, clipper, x_accuracy, y_accuracy)
+        return WritePDFtoTXT_OCR(images, outputName, mode, clipper, x_accuracy, y_accuracy, repate=repate)
     else:
         return WritePDFtoTXT_noOCR(pdfPath, outputName)
     
