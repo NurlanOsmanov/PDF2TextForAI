@@ -54,9 +54,9 @@ def ClearBoxes(image: cv2.typing.MatLike, name: str, accuracity_x: int = 50,  ac
 
     # Kenarları belirlemek için Canny Edge Detection kullan
     edges = cv2.Canny(gray, 50, 150)
-    i=datetime.now().microsecond
-    print(i)
-    cv2.imwrite(f"PNGs/az_tarixi_6_edge{i}.png", edges)
+    #i=datetime.now().microsecond
+    #print(i)
+    #cv2.imwrite(f"PNGs/az_tarixi_6_edge{i}.png", edges)
     # Konturları bul
     contours, _ = cv2.findContours(edges, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
 

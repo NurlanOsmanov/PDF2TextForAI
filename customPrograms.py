@@ -7,9 +7,10 @@ def TextClear(text):
     lines = text.split("\n")
     for i in range(0, len(lines) - 1):
         if len(lines[i]) == 0:
-            temp_text += "\n"
+            #temp_text += "\n"
             continue
-        if FindTopic(lines[i]): print("la\n\n")
+        if FindTopic(lines[i]): temp_text += "\n"
+        
         if lines[i][-1] == '-':
             lines[i] = lines[i][:-1]
         else:
@@ -24,16 +25,23 @@ def TextClear(text):
     
 def FindTopic(text):
     founded = False
-    beginsWithNumner = False
-    if(len(text) > 0 and text[0] >= '0' and text[0] <= '9'): 
-        beginsWithNumner = True
-    if(beginsWithNumner):
-        temp_text = text.split(".")[0] 
-        print(temp_text + " - " + temp_text[-1])
-        #Burani deyismek lazim olacaq
-        if(len(temp_text) > 0 and temp_text[-1] >= '0' and temp_text[-1] <= '9'):
-            founded = True
-            print("--> " + text)
+    if(len(text) > 0 and text[0] >= '0' and text[0] <= '9'):
+        temp_text = text.split(".")
+        number = temp_text[0]
+        topicName = temp_text[1]
+        if (len(topicName) == 0 or len(number) == 0): return False
+        
+        #eger noqteden evvel gelen reqemdise, ve ondan sonra gelenler boyukdurse
+        if(number[-1] >= '0' and number[-1] <= '9'):
+            for letter in topicName:
+                if(letter >= "A" and letter <= "Z" or letter in ['Ö','Ə','Ü']):
+                    founded = True
+                    continue
+                else:
+                    return False
+        else: return False
+        
+        #if(founded) print()
     return founded
 
 
@@ -45,8 +53,8 @@ def FindTopic(text):
 #App isleyecek:
 
 pdfPath = "PDFs/az_tarixi_6.pdf"
-startPage = 15
-endPage = 17
+startPage = 10
+endPage = 16
 
 useOCR = True
 deqiqlik = 400
@@ -58,4 +66,6 @@ print("Converting...")
 text = pr.WritePDFtoTXT(pdfPath,"Tests/misalOCR.txt",useOCR,deqiqlik,startPage,endPage,clipper=imageClipper,mode= r'--psm 6', x_accuracy=100,y_accuracy=100)
 
 text = TextClear(text)
-print(text)
+
+f = open("Tests/misalResult.txt", "w", encoding="utf-8")
+f.write(text)  
