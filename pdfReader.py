@@ -32,7 +32,7 @@ def WriteImagesToTXT_OCR(images, name, mode, clipper: bool, x_accuracy:int,y_acc
             image = ic.ClearBoxes(ic.ConverToMatlike(image), f"PNGs/test_png{startPage + i}.png", accuracity_x=x_accuracy,accuracity_y=y_accuracy, repate=repate, doBinary=doBinary,treshHold=treshHold)
             image = ic.ConverToImage(image)            
         
-        text = pytesseract.image_to_string(image, lang="aze+equ", config=mode)
+        text = pytesseract.image_to_string(image, lang="eng+aze", config=mode)
         #text = TextClear(text)
         fullText += '\n' + text
         #f = open(f"{name}_page{i + startPage}.txt", "w", encoding="utf-8")

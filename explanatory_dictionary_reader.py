@@ -1,3 +1,4 @@
+import re
 import pdfReader as pr
 import cv2
 import imageClipper as ic
@@ -8,99 +9,128 @@ import numpy as np
 def TextFormat(text):
     temp_text = ''
     lines = text.split("\n")
+    
+    connectSentece = False
     for i in range(0, len(lines) - 1):
         if len(lines[i]) == 0:
-            temp_text += "\n"
+            if (not connectSentece):
+                temp_text += "\n"
             continue
         if lines[i][-1] == '-':
             lines[i] = lines[i][:-1]
+            connectSentece = True
         else:
-            if(lines[i][-1] not in ['.','?','!']): 
-                lines[i] += " "
-        if (lines[i][0] in ['*','x']):
-            # Kamalin kodu
-            continue
-        else:
-            temp_text += lines[i]
+            temp_text += " "
+            connectSentece = False
+                
+        temp_text += lines[i]
         print(lines[i])
     print("-------------------------------------------------\n" + temp_text)
     return temp_text
     
-def FindTopic(text):
-    founded = False
-    if(len(text) > 0 and text[0] >= '0' and text[0] <= '9'):
-        temp_text = text.split(".")
-
-
-        if (len(temp_text) != 2 or temp_text[0] is None or temp_text[1] is None): return False
-
-        number = temp_text[0]
-        topicName = temp_text[1]
-        if(len(topicName) == 1): return False
-        #eger noqteden evvel gelen reqemdise, ve ondan sonra gelenler boyukdurse
-        if(number[-1] >= '0' and number[-1] <= '9'):
-            for i,letter in enumerate(topicName):
-                if((letter >= "A" and letter <= "Z") or (letter >= "0" and letter <= "9") or letter in ['Ö','Ə','Ü','İ',' ', '-','—', 'Ç','Ş']):
-                    founded = True
-                    continue
-                else:
-                    return False
-        else: return False
     
-        
-    #if(founded): print("000000000000000000000000000000000000000")
-    return founded
-
-def IsValidSentence(line):
-    if(line[-1] not in['.', '?', '!'] or line[-2] == ' '): return False
-    if(not(line[0] >= "A" and line[0] <= "Z" or line[0] in ['Ö','Ə','Ü','İ',' ', '-','—', 'Ç','Ş']) and not(line[0] >= '0' and line[0] <='9')): False
-    return True
-
-def SplitToPoints(lines):
-    resultSentences = []
+def FindWord():
+    found = True
     
-    for line in lines:
-        add = False
-        sentences = line.split('.')
-        if(len(sentences) <= 1): continue
-        for i,_ in enumerate(sentences):
-            if(len(sentences[i]) == 0): continue
-            if(not (sentences[i][-1] > '0' and sentences[i][-1] <'9')):
-                if not add:
-                    resultSentences.append(sentences[i] + '.')
-                else:
-                    resultSentences[-1] += sentences[i]
-            else:
-                add = True
-                resultSentences.append(sentences[i] + '.')
-
-    #Do somethings
     
-    return resultSentences
-            
-        
-        
-
-def ClearText(text):
+    
+    
+    return found
+    
+    
+def TextData():
     result = ''
-    if(text is None): return "There is not text"
-    abzas = text.split('\n')
-    lines = SplitToPoints(abzas)
     
-    for i in range(0, len(lines) - 1):
-        if FindTopic(lines[i]): 
-            result += "\n"
-            result += lines[i] 
-            result += "\n"
-            continue
-        if(IsValidSentence(lines[i])):
-            if(lines[i][0] != ' '): lines[i] = " " + lines[i]
-            result += lines[i]
-        else: print("(" + lines[i][0] + "), (" + lines[i][-1] + ") ->>>>" + lines[i])
     
     return result
     
+    
+def process_dictionary_text(text):
 
+    
+    
+    
+    # Sətir sonundakı "-" işarələrini birləşdir
+    text = re.sub(r'(\w)-\s+(\w)', r'\1\2', text)
+    
+    # Abzaslara ayır
+    paragraphs = [p.strip() for p in text.split('\n\n') if p.strip()]
+    
+    entries = []
+    current_entry = None
+    
+    for para in paragraphs:
+        # İlk sətri götür
+        first_line = para.split('\n')[0] if '\n' in para else para
+        first_word = re.split(r'\s+', first_line, maxsplit=1)[0]
+        
+        # Əsas sözü yoxla
+        if is_main_word(first_word):
+            # Yeni giriş yarat
+            if current_entry:
+                entries.append(current_entry)
+            
+            main_word = clean_main_word(first_word)
+            explanation = process_explanation(para[len(first_word):])
+            current_entry = {'word': main_word, 'explanation': explanation}
+        else:
+            # Əvvəlki girişə əlavə et
+            if current_entry:
+                additional_explanation = process_explanation(para)
+                if additional_explanation:
+                    if current_entry['explanation']:
+                        current_entry['explanation'] += ' ' + additional_explanation
+                    else:
+                        current_entry['explanation'] = additional_explanation
+    
+    # Son girişi əlavə et
+    if current_entry:
+        entries.append(current_entry)
+    
+    # Nəticəni formatla
+    result = []
+    for entry in entries:
+        if entry['explanation']:
+            result.append(f"{entry['word']}\n{entry['explanation']}")
+    
+    return '\n\n'.join(result) if result else ""
+
+def is_main_word(word):
+    # Əsas söz olub-olmadığını yoxla (böyük hərflə başlayır və ya tam böyükdür)
+    return (word[0].isupper() if word else False) or word.isupper()
+
+def clean_main_word(word):
+    # Əsas sözü təmizlə
+    return re.sub(r'[^A-ZƏÜÖĞŞÇİ]', '', word.upper())
+
+def process_explanation(text):
+    # Bütün sətirləri birləşdir
+    lines = [line.strip() for line in text.split('\n')]
+    full_text = ' '.join(lines)
+    
+    # İlk böyük hərfli sözə və ya rəqəmə qədər kəsilir
+    match = re.search(r'([A-ZƏÜÖĞŞÇİ][a-zəüöğşçi]+|\d+\.)', full_text)
+    if match:
+        full_text = full_text[match.start():]
+    
+    # Lazımsız hissələri təmizlə
+    full_text = re.sub(r'\[.*?\]', '', full_text)  # Kvadrat mötərizələr
+    full_text = re.sub(r'\{.*?\}', '', full_text)  # Fiğurlu mötərizələr
+    #full_text = re.sub(r'\(.*?\)', '', full_text)  # Dairəvi mötərizələr
+    full_text = re.sub(r'\|.*?\]', '', full_text)  # Kvadrat mötərizələr
+    full_text = re.sub(r'\[.*?\|', '', full_text)  # Kvadrat mötərizələr
+    full_text = re.sub(r'[|:]', '', full_text)     # | və : işarələri
+    full_text = re.sub(r'\s+', ' ', full_text).strip()
+    
+    return full_text
+
+
+def ClearText(text):
+    result = ""
+    
+    result = TextFormat(text)
+    
+    return result
 #----------------------Image Manuplator-----------------------------------------------
 
 def CutImageToHalf(image):
@@ -128,15 +158,40 @@ def CutImage2Piece(raitox, image):
 def CropImage(image, left, top, right, bottom):
     return image.crop((left, top, right, bottom))
 
-def PageToImages(images):
+def PageToImages(images, formation:bool = False, StartPageFormayion: bool = False):
     result = []
+    _formation = StartPageFormayion
+
+        
     for i in images:
-        image = images[0]
+        image = i
+        
+        leftMargin = 0
+        topMargin = 0
+        rightMargin = 1
+        bottomMargin = 1
+        
+        if(formation):
+            if(not _formation):
+                leftMargin = leftMargin0
+                topMargin = topMargin0
+                rightMargin = rightMargin0
+                bottomMargin = bottomMargin0
+            else:
+                leftMargin = leftMargin1
+                topMargin = topMargin1
+                rightMargin = rightMargin1
+                bottomMargin = bottomMargin1
+                
+            _formation = not _formation
+                
         image = CropImage(image, leftMargin * image.size[0], topMargin * image.size[1], rightMargin * image.size[0], bottomMargin * image.size[1])
         corpedImages = CutImage2Piece(0.51,image)
         result.append(corpedImages[0])
         result.append(corpedImages[1])
     return result
+
+
 #----------------------App isleyecek:----------------------------------------------------------
 
 pdfPath = "PDFs/azərbaycan_dilinin_izahli_lügeti0.pdf"
@@ -163,24 +218,44 @@ treshHold = 250
 
 """
 
+#1-ci formation margins
+leftMargin0 = 0.125
+topMargin0 = 0.1
+rightMargin0 = 0.915
+bottomMargin0 = 0.875
 
-leftMargin = 0.125
-topMargin = 0.1
-rightMargin = 0.915
-bottomMargin = 0.875
+#2-ci formation margins
+leftMargin1 = 0.085
+topMargin1 = 0.1
+rightMargin1 = 0.875
+bottomMargin1 = 0.875
+
 #-------------------------------
 
 print("Converting...")
 
 images = pr.PDFtoImage(pdfPath,dpi,startPage,endPage)
 
-myImages = PageToImages(images)
+myImages = PageToImages(images, True, False)
 
 print("Images converted to PNGs! Length of PDF: " + str(len(myImages)))
 
-pr.WriteImagesToTXT_OCR(myImages, pdfname, "--psm 6 --oem 3", imageClipper, 50, 50, repate=False, treshHold=treshHold, doBinary=doBinary)
+ocrResult = pr.WriteImagesToTXT_OCR(myImages, pdfname, "--psm 6 --oem 3", imageClipper, 50, 50, repate=False, treshHold=treshHold, doBinary=doBinary)
 
-# image = ic.ConverToMatlike(image.resize((int(image.size[0] * 0.25), int(image.size[1] * 0.25))))
+# ClearText(ocrResult)
+
+
+
+
+result = process_dictionary_text(ocrResult)
+
+f = open(pdfname+"result", "w", encoding="utf-8")
+f.write(result)   
+
+
+
+# myImage = myImages[3]
+# image = ic.ConverToMatlike(myImage.resize((int(myImage.size[0] * 0.25), int(myImage.size[1] * 0.25))))
 # cv2.imshow('image', image)
 # cv2.moveWindow('image',0,0)
 # cv2.waitKey(0)

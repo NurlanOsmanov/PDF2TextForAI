@@ -99,8 +99,8 @@ def ClearBoxes(image: cv2.typing.MatLike, name: str, accuracity_x: int = 50,  ac
                 
     if(repate):
         opencv_image = ClearBoxes(opencv_image,name,accuracity_x * 0.9,accuracity_y*0.9,False)
-    else:
-        cv2.imwrite(filename=name,img =opencv_image)
+    #else:
+        #cv2.imwrite(filename=name,img =opencv_image)
         
     return opencv_image
 
