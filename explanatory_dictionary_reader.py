@@ -1,6 +1,7 @@
 import pdfReader as pr
 import cv2
 import imageClipper as ic
+import numpy as np
 
 #----------------TextManiplators----------------
 #Setrleri birlesdirib
@@ -127,17 +128,25 @@ def CutImage2Piece(raitox, image):
 def CropImage(image, left, top, right, bottom):
     return image.crop((left, top, right, bottom))
 
-
+def PageToImages(images):
+    result = []
+    for i in images:
+        image = images[0]
+        image = CropImage(image, leftMargin * image.size[0], topMargin * image.size[1], rightMargin * image.size[0], bottomMargin * image.size[1])
+        corpedImages = CutImage2Piece(0.51,image)
+        result.append(corpedImages[0])
+        result.append(corpedImages[1])
+    return result
 #----------------------App isleyecek:----------------------------------------------------------
 
 pdfPath = "PDFs/azərbaycan_dilinin_izahli_lügeti0.pdf"
 pdfname = "azərbaycan_dilinin_izahli_lügeti0"
 startPage = 26
-endPage = 26
+endPage = 27
 
 useOCR = True
-dpi = 500
-imageClipper = True
+dpi = 600
+imageClipper = False
 doBinary = False
 treshHold = 250
 
@@ -155,20 +164,26 @@ treshHold = 250
 """
 
 
-#kitablar ucun isledecik
+leftMargin = 0.125
+topMargin = 0.1
+rightMargin = 0.915
+bottomMargin = 0.875
+#-------------------------------
 
-text = pr.WritePDFtoTXT(pdfPath,f"Tests/{pdfname}_OCR.txt",useOCR,dpi,startPage,endPage,clipper=imageClipper,mode= r'--psm 6', x_accuracy=110,y_accuracy=110,repate=False, doBinary=doBinary,treshHold=treshHold)
+print("Converting...")
 
-text = TextFormat(text)
+images = pr.PDFtoImage(pdfPath,dpi,startPage,endPage)
 
-f = open(f"Tests/{pdfname}_edited.txt", "w", encoding="utf-8")
-f.write(text)  
+myImages = PageToImages(images)
 
-text = text[2:]
+print("Images converted to PNGs! Length of PDF: " + str(len(myImages)))
 
-#print(text)
-text = ClearText(text)
+pr.WriteImagesToTXT_OCR(myImages, pdfname, "--psm 6 --oem 3", imageClipper, 50, 50, repate=False, treshHold=treshHold, doBinary=doBinary)
 
-f = open(f"Tests/{pdfname}_Result.txt", "w", encoding="utf-8")
-f.write(text)  
+# image = ic.ConverToMatlike(image.resize((int(image.size[0] * 0.25), int(image.size[1] * 0.25))))
+# cv2.imshow('image', image)
+# cv2.moveWindow('image',0,0)
+# cv2.waitKey(0)
+# cv2.destroyAllWindows()
+
 

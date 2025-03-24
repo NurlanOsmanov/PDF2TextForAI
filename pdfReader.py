@@ -8,16 +8,31 @@ import cv2
 
 #-------------------Convertors----------------------
 
-def WritePDFtoTXT_OCR(images, name, mode, clipper: bool, x_accuracy:int,y_accuracy:int, repate: bool=False):
+def WriteImageToTXT(image, name, mode, clipper: bool, x_accuracy:int,y_accuracy:int, repate: bool=False,  doBinary: bool = False, treshHold: int = 250):
+    fullText = " "
+    if(clipper):
+            image = ic.ClearBoxes(ic.ConverToMatlike(image), f"PNGs/test_png{startPage}.png", accuracity_x=x_accuracy,accuracity_y=y_accuracy, repate=repate, doBinary=doBinary,treshHold=treshHold)
+            image = ic.ConverToImage(image)            
+        
+    text = pytesseract.image_to_string(image, lang="aze", config=mode)
+    
+    fullText += '\n' + text
+    
+    print(f"Page converted")
+    f = open(name, "w", encoding="utf-8")
+    f.write(fullText)    
+    return fullText
+    
+def WriteImagesToTXT_OCR(images, name, mode, clipper: bool, x_accuracy:int,y_accuracy:int, repate: bool=False,  doBinary: bool = False, treshHold: int = 250):
     fullText = " "
     for i,image in enumerate(images):
         print(f"Page {i} is converting...")
         #lazimsiz boxlari silir
         if(clipper):
-            image = ic.ClearBoxes(ic.ConverToMatlike(image), f"PNGs/test_png{startPage + i}.png", accuracity_x=x_accuracy,accuracity_y=y_accuracy, repate=repate)
+            image = ic.ClearBoxes(ic.ConverToMatlike(image), f"PNGs/test_png{startPage + i}.png", accuracity_x=x_accuracy,accuracity_y=y_accuracy, repate=repate, doBinary=doBinary,treshHold=treshHold)
             image = ic.ConverToImage(image)            
         
-        text = pytesseract.image_to_string(image, lang="aze", config=mode)
+        text = pytesseract.image_to_string(image, lang="aze+equ", config=mode)
         #text = TextClear(text)
         fullText += '\n' + text
         #f = open(f"{name}_page{i + startPage}.txt", "w", encoding="utf-8")
@@ -27,7 +42,7 @@ def WritePDFtoTXT_OCR(images, name, mode, clipper: bool, x_accuracy:int,y_accura
     f.write(fullText)    
     return fullText
     
-def WritePDFtoTXT_noOCR(pdf_path, output_txt):
+def WriteImagestoTXT_noOCR(pdf_path, output_txt):
     # Open the PDF file in read-binary mode
     with open(pdf_path, 'rb') as pdf_file:
         # Create a PdfReader object instead of PdfFileReader
@@ -44,12 +59,16 @@ def WritePDFtoTXT_noOCR(pdf_path, output_txt):
     print("PDF converted to text successfully!")
     return text
 
-def WritePDFtoTXT(pdfPath:str,outputName:str,ocrmode:bool, dpi:int, startPage:int, endPage:int, mode:str , clipper: bool, x_accuracy = 50, y_accuracy = 50, repate:bool=False):
+def WritePDFtoTXT(pdfPath:str,outputName:str,ocrmode:bool, dpi:int, startPage:int, endPage:int, mode:str , clipper: bool, x_accuracy = 50, y_accuracy = 50, repate:bool=False, doBinary: bool = False, treshHold: int = 250):
     if ocrmode:
         images = p2i.convert_from_path(pdfPath, dpi, first_page= startPage, last_page=endPage)
-        return WritePDFtoTXT_OCR(images, outputName, mode, clipper, x_accuracy, y_accuracy, repate=repate)
+        return WriteImagesToTXT_OCR(images, outputName, mode, clipper, x_accuracy, y_accuracy, repate=repate, treshHold=treshHold,doBinary=doBinary)
     else:
-        return WritePDFtoTXT_noOCR(pdfPath, outputName)
+        return WriteImagestoTXT_noOCR(pdfPath, outputName)
+    
+def PDFtoImage(pdfPath:str,dpi:int, startPage:int, endPage:int):
+    images = p2i.convert_from_path(pdfPath, dpi, first_page= startPage, last_page=endPage)
+    return images
     
     
     

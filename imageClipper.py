@@ -62,9 +62,11 @@ def MakeBinary(image: cv2.typing.MatLike, threshold: int=250):
     return result
 
 
-def ClearBoxes(image: cv2.typing.MatLike, name: str, accuracity_x: int = 50,  accuracity_y: int= 50, repate: bool=False):
+def ClearBoxes(image: cv2.typing.MatLike, name: str, accuracity_x: int = 50,  accuracity_y: int= 50, repate: bool=False, doBinary: bool = False, treshHold: int = 250):
+    
     try:
-        opencv_image = MakeBinary(image, 220)
+        if(doBinary):
+            opencv_image = MakeBinary(image, treshHold)
         gray = cv2.cvtColor(opencv_image, cv2.COLOR_BGR2GRAY)
         opencv_image = gray 
     except:
