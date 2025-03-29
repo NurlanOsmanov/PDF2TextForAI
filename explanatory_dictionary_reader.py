@@ -3,6 +3,7 @@ import pdfReader as pr
 import cv2
 import imageClipper as ic
 import numpy as np
+import dictionaryclass as dc
 
 #----------------TextManiplators----------------
 #Setrleri birlesdirib
@@ -44,12 +45,30 @@ def TextData():
     
     return result
     
+
+
+def GetListOfDictionary(text):
+    dictionary:list[dc.dictionary] = []
+
+    text = re.sub(r'(\w)-\s+(\w)', r'\1\2', text)
     
-def process_dictionary_text(text):
+    # Abzaslara ayır
+    paragraphs = [p.strip() for p in text.split('\n\n') if p.strip()]
+    
+    print("\n--------------------------------------------------------\n")
+    lastWord = ""
+    for para in paragraphs:
+        para = para.replace("\n", " ")
+        print(para + "\n\n")    
+
+        #entry = dc.dictionary()
+
+    return dictionary
+
+
 
     
-    
-    
+def process_dictionary_text(text):
     # Sətir sonundakı "-" işarələrini birləşdir
     text = re.sub(r'(\w)-\s+(\w)', r'\1\2', text)
     
@@ -245,12 +264,12 @@ ocrResult = pr.WriteImagesToTXT_OCR(myImages, pdfname, "--psm 6 --oem 3", imageC
 # ClearText(ocrResult)
 
 
+GetListOfDictionary(ocrResult)
 
+# result = process_dictionary_text(ocrResult)
 
-result = process_dictionary_text(ocrResult)
-
-f = open(pdfname+"result", "w", encoding="utf-8")
-f.write(result)   
+# f = open(pdfname+"result", "w", encoding="utf-8")
+# f.write(result)   
 
 
 
