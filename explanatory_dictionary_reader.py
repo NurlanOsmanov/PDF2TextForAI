@@ -4,6 +4,7 @@ import cv2
 import imageClipper as ic
 import numpy as np
 import dictionaryclass as dc
+import json
 
 #----------------TextManiplators----------------
 #Setrleri birlesdirib
@@ -56,11 +57,34 @@ def GetListOfDictionary(text):
     paragraphs = [p.strip() for p in text.split('\n\n') if p.strip()]
     
     print("\n--------------------------------------------------------\n")
-    lastWord = ""
+    lastWord = dc.dictionary()
+    
     for para in paragraphs:
         para = para.replace("\n", " ")
-        print(para + "\n\n")    
-
+        
+        thisWord = dc.dictionary()
+        
+        first_word = re.split(r'\s+', para, maxsplit=1)[0]   
+        
+        if is_main_word(first_word):
+            main_word = clean_main_word(first_word)
+            
+            thisWord.word = main_word
+            thisWord.explanation,thisWord.type,thisWord.origin = process_explanation(para[len(first_word):])
+            
+            lastWord = thisWord
+        else:
+            if lastWord == None:
+                continue
+            else:
+                thisWord.word = lastWord.word
+                thisWord.explanation,thisWord.type,thisWord.origin = process_explanation(para, lastWord.type, lastWord.origin)
+                if thisWord.type == "":
+                    thisWord.type = lastWord.type
+                if thisWord.origin != lastWord.origin:
+                    thisWord.origin = lastWord.origin
+                
+        dictionary.append(thisWord)
         #entry = dc.dictionary()
 
     return dictionary
@@ -90,7 +114,7 @@ def process_dictionary_text(text):
                 entries.append(current_entry)
             
             main_word = clean_main_word(first_word)
-            explanation = process_explanation(para[len(first_word):])
+            explanation,_ = process_explanation(para[len(first_word):])
             current_entry = {'word': main_word, 'explanation': explanation}
         else:
             # Əvvəlki girişə əlavə et
@@ -122,13 +146,19 @@ def clean_main_word(word):
     # Əsas sözü təmizlə
     return re.sub(r'[^A-ZƏÜÖĞŞÇİ]', '', word.upper())
 
-def process_explanation(text):
+def process_explanation(text, wordtype = "", wordorgin = dc.WordOrgin.azərbaycanca.name):
     # Bütün sətirləri birləşdir
     lines = [line.strip() for line in text.split('\n')]
     full_text = ' '.join(lines)
     
     # İlk böyük hərfli sözə və ya rəqəmə qədər kəsilir
-    match = re.search(r'([A-ZƏÜÖĞŞÇİ][a-zəüöğşçi]+|\d+\.)', full_text)
+    match = re.search(r'([A-ZƏÜÖĞŞÇİ][a-zəüöğşçi]+|\d+\.)', full_text) 
+    if match:
+    #Sozun tipini burdan hell ediirk
+        wordtypeandorgin = full_text[:match.start()]
+        wordtype,wordorgin = Search_WordTypeAndOrgin(wordtypeandorgin)
+    
+    
     if match:
         full_text = full_text[match.start():]
     
@@ -141,8 +171,24 @@ def process_explanation(text):
     full_text = re.sub(r'[|:]', '', full_text)     # | və : işarələri
     full_text = re.sub(r'\s+', ' ', full_text).strip()
     
-    return full_text
+    return full_text, wordtype, wordorgin
 
+
+def Search_WordTypeAndOrgin(text):   
+    _type = ""
+    _origin = dc.WordOrgin.azərbaycanca.name
+    
+    for member in dc.WordType:
+        if member.value in text:
+            _type = member.name
+            break
+        
+    for member in dc.WordOrgin:
+        if member.value in text:
+            _origin = member.name
+            break
+        
+    return _type, _origin
 
 def ClearText(text):
     result = ""
@@ -261,10 +307,15 @@ print("Images converted to PNGs! Length of PDF: " + str(len(myImages)))
 
 ocrResult = pr.WriteImagesToTXT_OCR(myImages, pdfname, "--psm 6 --oem 3", imageClipper, 50, 50, repate=False, treshHold=treshHold, doBinary=doBinary)
 
-# ClearText(ocrResult)
 
+dic = GetListOfDictionary(text=ocrResult)
+for i in dic:
+    print("word: " + i.word + "\ntype: " + i.type + "\norgin: "+i.origin + "\nexplanation: " +  i.explanation + "\n\n")
+    
+jsonText = json.dumps([entry.__dict__ for entry in dic], ensure_ascii=False, indent=4)
 
-GetListOfDictionary(ocrResult)
+with open(pdfname + ".json", "w", encoding="utf-8") as f:
+    f.write(jsonText)
 
 # result = process_dictionary_text(ocrResult)
 
