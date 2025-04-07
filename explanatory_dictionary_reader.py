@@ -1,4 +1,5 @@
 import re
+import time
 import pdfReader as pr
 import cv2
 import imageClipper as ic
@@ -223,9 +224,9 @@ def CutImage2Piece(raitox, image):
 def CropImage(image, left, top, right, bottom):
     return image.crop((left, top, right, bottom))
 
-def PageToImages(images, formation:bool = False, StartPageFormayion: bool = False):
+def PageToImages(images, formation:bool = False, StartPageFormation: bool = False):
     result = []
-    _formation = StartPageFormayion
+    _formation = StartPageFormation
 
         
     for i in images:
@@ -259,10 +260,10 @@ def PageToImages(images, formation:bool = False, StartPageFormayion: bool = Fals
 
 #----------------------App isleyecek:----------------------------------------------------------
 
-pdfPath = "PDFs/azərbaycan_dilinin_izahli_lügeti0.pdf"
-pdfname = "azərbaycan_dilinin_izahli_lügeti0"
-startPage = 26
-endPage = 27
+pdfPath = "PDFs/azərbaycan_dilinin_izahli_lügeti1.pdf"
+pdfname = "azərbaycan_dilinin_izahli_lügeti1"
+startPage = 5
+endPage = 790
 
 useOCR = True
 dpi = 600
@@ -296,14 +297,18 @@ rightMargin1 = 0.875
 bottomMargin1 = 0.875
 
 #-------------------------------
+timer = time.time()
 
 print("Converting...")
 
 images = pr.PDFtoImage(pdfPath,dpi,startPage,endPage)
 
-myImages = PageToImages(images, True, False)
+myImages = PageToImages(images, True, startPage%2 != 0)
 
 print("Images converted to PNGs! Length of PDF: " + str(len(myImages)))
+
+myImage = myImages[3]
+
 
 ocrResult = pr.WriteImagesToTXT_OCR(myImages, pdfname, "--psm 6 --oem 3", imageClipper, 50, 50, repate=False, treshHold=treshHold, doBinary=doBinary)
 
@@ -317,18 +322,12 @@ jsonText = json.dumps([entry.__dict__ for entry in dic], ensure_ascii=False, ind
 with open(pdfname + ".json", "w", encoding="utf-8") as f:
     f.write(jsonText)
 
-# result = process_dictionary_text(ocrResult)
-
-# f = open(pdfname+"result", "w", encoding="utf-8")
-# f.write(result)   
+print("total time: " + ( time.time() - timer).__str__())
 
 
-
-# myImage = myImages[3]
 # image = ic.ConverToMatlike(myImage.resize((int(myImage.size[0] * 0.25), int(myImage.size[1] * 0.25))))
 # cv2.imshow('image', image)
 # cv2.moveWindow('image',0,0)
 # cv2.waitKey(0)
 # cv2.destroyAllWindows()
-
 
