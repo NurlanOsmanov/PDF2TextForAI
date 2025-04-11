@@ -297,32 +297,42 @@ rightMargin1 = 0.875
 bottomMargin1 = 0.875
 
 #-------------------------------
-timer = time.time()
+pdfInfos = [
+    {"pdfPath": "PDFs/azərbaycan_dilinin_izahli_lügeti0.pdf", "pdfname": "azərbaycan_dilinin_izahli_lügeti0", "startPage": 5, "endPage": 780},
+    {"pdfPath": "PDFs/azərbaycan_dilinin_izahli_lügeti1.pdf", "pdfname": "azərbaycan_dilinin_izahli_lügeti1", "startPage": 5, "endPage": 790},
+    {"pdfPath": "PDFs/azərbaycan_dilinin_izahli_lügeti2.pdf", "pdfname": "azərbaycan_dilinin_izahli_lügeti2", "startPage": 5, "endPage": 775},
+    {"pdfPath": "PDFs/azərbaycan_dilinin_izahli_lügeti3.pdf", "pdfname": "azərbaycan_dilinin_izahli_lügeti3", "startPage": 5, "endPage": 785}
+]
 
-print("Converting...")
+for info in pdfInfos:
+    pdfPath = info["pdfPath"]
+    pdfname = info["pdfname"]
+    startPage = info["startPage"]
+    endPage = info["endPage"]
 
-images = pr.PDFtoImage(pdfPath,dpi,startPage,endPage)
+    timer = time.time()
+    print(f"Converting {pdfname}...")
 
-myImages = PageToImages(images, True, startPage%2 != 0)
+    images = pr.PDFtoImage(pdfPath, dpi, startPage, endPage)
+    myImages = PageToImages(images, True, startPage % 2 != 0)
 
-print("Images converted to PNGs! Length of PDF: " + str(len(myImages)))
+    print(f"Images converted to PNGs! Length of PDF: {len(myImages)}")
 
-myImage = myImages[3]
+    ocrResult = pr.WriteImagesToTXT_OCR(
+        myImages, pdfname, "--psm 6 --oem 3",
+        imageClipper, 50, 50,
+        repate=False,
+        treshHold=treshHold,
+        doBinary=doBinary
+    )
 
+    dic = GetListOfDictionary(text=ocrResult)
+    jsonText = json.dumps([entry.__dict__ for entry in dic], ensure_ascii=False, indent=4)
 
-ocrResult = pr.WriteImagesToTXT_OCR(myImages, pdfname, "--psm 6 --oem 3", imageClipper, 50, 50, repate=False, treshHold=treshHold, doBinary=doBinary)
+    with open(pdfname + ".json", "w", encoding="utf-8") as f:
+        f.write(jsonText)
 
-
-dic = GetListOfDictionary(text=ocrResult)
-for i in dic:
-    print("word: " + i.word + "\ntype: " + i.type + "\norgin: "+i.origin + "\nexplanation: " +  i.explanation + "\n\n")
-    
-jsonText = json.dumps([entry.__dict__ for entry in dic], ensure_ascii=False, indent=4)
-
-with open(pdfname + ".json", "w", encoding="utf-8") as f:
-    f.write(jsonText)
-
-print("total time: " + ( time.time() - timer).__str__())
+    print(f"{pdfname} done in {time.time() - timer:.2f} seconds.\n")
 
 
 # image = ic.ConverToMatlike(myImage.resize((int(myImage.size[0] * 0.25), int(myImage.size[1] * 0.25))))
