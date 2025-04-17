@@ -24,6 +24,14 @@ lemmas = [fullData.word for fullData in fullData]
 unique_dict = {}
 
 for i in range(len(lemmas)):
+    lemma = ""
+    for j in lemmas[i]:
+        if j == "I":
+            lemma += "ı"
+        else:
+            lemma += j
+
+    lemmas[i] = lemma
     lemmas[i] = lemmas[i].lower()
     if lemmas[i].endswith("maq") or lemmas[i].endswith("mək") and len(lemmas[i]) > 3:
         lemmas[i] = lemmas[i][:-3]
