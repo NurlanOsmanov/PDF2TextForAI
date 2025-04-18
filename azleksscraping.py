@@ -26,7 +26,7 @@ print(driver.title)
 
 # Məlumatların çəkilməsi
 endpage = 2463
-page = 1
+page = 1192
 url_template = "https://www.azleks.az/online-dictionary/?s=4&page={}"
 all_data:list[dc.dictionary] = []
 while page < endpage:
@@ -64,11 +64,11 @@ while page < endpage:
                             try: 
 
                             
-                                word = word.contents[0].strip()
+                                word = word.contents[0].text
                             except Exception as e:
                                 print(repr(e))
 
-                        else:word.get_text(strip=True)
+                        else:word = word.get_text(strip=True)
 
                         newEntry.word = word
                     nitq_hissesi = h3.find("span", "nitq-hissesi")
@@ -96,12 +96,13 @@ while page < endpage:
         print(f"Səhifə {page} bitdi, {len(items)} söz tapıldı.")
         page += 1
         time.sleep(1)  # Serverə yük olmaması üçün yüngül gecikmə
-        if(page % 20):
-            with open("backup_data.txt", "w") as f:
-                f.write(all_data)
+        if(page % 20 == 0):
+            jsonText = json.dumps([entry.__dict__ for entry in all_data], ensure_ascii=False, indent=4)
+            with open("backup_data.json", "w") as f:
+                f.write(jsonText)
     except Exception as e:
         print(repr(e))
-        time.sleep(60)  # Serverə yük olmaması üçün yüngül gecikmə
+        time.sleep(5)  # Serverə yük olmaması üçün yüngül gecikmə
 
 
 jsonText = json.dumps([entry.__dict__ for entry in all_data], ensure_ascii=False, indent=4)
@@ -110,4 +111,4 @@ with open("azleks_data.json", "w", encoding="utf-8") as f:
     f.write(jsonText)
 
 driver.quit()
-print("✅ Bütün sözlər uğurla yığıldı və fayla yazıldı.")
+print(" Bütün sözlər uğurla yığıldı və fayla yazıldı.")
