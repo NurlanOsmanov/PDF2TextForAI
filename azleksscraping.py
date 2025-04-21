@@ -25,8 +25,8 @@ print(driver.title)
 # golopeh977@ptiong.com "42£ko+EoA>5
 
 # Məlumatların çəkilməsi
-endpage = 2463
-page = 1192
+endpage = 1192
+page = 1
 url_template = "https://www.azleks.az/online-dictionary/?s=4&page={}"
 all_data:list[dc.dictionary] = []
 while page < endpage:
@@ -107,7 +107,7 @@ while page < endpage:
 
 jsonText = json.dumps([entry.__dict__ for entry in all_data], ensure_ascii=False, indent=4)
 # JSON formatında yadda saxla
-with open("azleks_data.json", "w", encoding="utf-8") as f:
+with open("azleks_data.json", "a", encoding="utf-8") as f:
     f.write(jsonText)
 
 driver.quit()

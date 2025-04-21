@@ -14,7 +14,7 @@ def Remove_Suffix(word, suffix_enum, root_words):
 
 #------------------------------------------------------------------
 
-with open("DATAS/fullData.json", "r",encoding="utf8") as file:
+with open("DATAS/azleks_data.json", "r",encoding="utf8") as file:
     fullData = js.loads(file.read(), object_hook=lambda d: dc.dictionary(**d))
     
 
