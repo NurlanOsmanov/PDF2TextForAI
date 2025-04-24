@@ -109,6 +109,10 @@ class LexicalSuffix(Enum):
     dır1 = "dir"
     lan0 = "lan"
     lan1 = "lən"
+    casina0 = "casına"
+    casina1 = "cəsinə"
+    xana0 = "xana"
+    xana1 = "xanə"
 
 
 class GrammaticalSuffix(Enum):

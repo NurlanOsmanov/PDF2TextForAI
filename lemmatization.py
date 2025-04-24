@@ -17,29 +17,20 @@ def Remove_Suffix(word, suffix_enum, root_words):
 with open("DATAS/azleks_data.json", "r",encoding="utf8") as file:
     fullData = js.loads(file.read(), object_hook=lambda d: dc.dictionary(**d))
     
-
-lemmas = [fullData.word for fullData in fullData]
 #print(lemmas[256])
 
 unique_dict = {}
 
-for i in range(len(lemmas)):
-    lemma = ""
-    for j in lemmas[i]:
-        if j == "I":
-            lemma += "ı"
-        else:
-            lemma += j
-
-    lemmas[i] = lemma
-    lemmas[i] = lemmas[i].lower()
-    if lemmas[i].endswith("maq") or lemmas[i].endswith("mək") and len(lemmas[i]) > 3:
-        lemmas[i] = lemmas[i][:-3]
+for i in range(len(fullData)):
+    if fullData[i].type == "feil" or fullData[i].type == "":
+        if fullData[i].word.endswith("maq") or fullData[i].word.endswith("mək") and len(fullData[i].word) > 3:
+            fullData[i].word = fullData[i].word[:-3]
     
-    if lemmas[i] not in unique_dict:
-        unique_dict[lemmas[i]] = lemmas[i]
+    if fullData[i].word not in unique_dict:
+        unique_dict[fullData[i].word] = fullData[i].word
 
-del lemmas
+del fullData[i].word
+
 lemmas = list(unique_dict.values()) 
     
 with open("DATAS/lemmas.json", "w",encoding="utf8") as file:
