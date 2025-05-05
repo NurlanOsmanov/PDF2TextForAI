@@ -25,10 +25,15 @@ print(driver.title)
 # golopeh977@ptiong.com "42£ko+EoA>5
 
 # Məlumatların çəkilməsi
-endpage = 1192
-page = 1
+endpage = 2463
+page = 1300
 url_template = "https://www.azleks.az/online-dictionary/?s=4&page={}"
 all_data:list[dc.dictionary] = []
+
+
+allowed_classes = ['vurgu']
+
+
 while page < endpage:
     try:
         url = url_template.format(page)
@@ -55,22 +60,57 @@ while page < endpage:
             word_data = {}
             h3all = item.find_all("h3", class_="bash-soz")
 
+            first_h3 = False
             for h3 in h3all:
                 if h3:
                     newEntry:dc.dictionary = dc.dictionary()
-                    word = h3.find("strong")
-                    if(word):
-                        if(len(word.contents) > 0):
-                            try: 
+                    
+                    
+                    word_parts = ""
+                    for strong in h3.find_all('strong'):
+                        # Orijinalı dəyişmədən nüsxə çıxar
+                        strong_copy_html = str(strong)
+                        strong_copy_soup = BeautifulSoup(strong_copy_html, 'html.parser')
+                        strong_copy = strong_copy_soup.find('strong')
+
+                        # Bu hissədə artıq sadəcə copy üzərində işləyirik
+                        tags_to_remove = []
+                        for tag in strong_copy.find_all():
+                            tag_classes = tag.get('class', [])
+
+                            if not any(cls in allowed_classes for cls in tag_classes):
+                                tags_to_remove.append(tag)  # saxla, amma sonra sil
+
+                        # İndi tagləri sil (təhlükəsiz – iterable pozulmur)
+                        for tag in tags_to_remove:
+                            tag.decompose()
+
+                        clean_text = strong_copy.get_text(strip=True)
+                        if clean_text.endswith("\n"):
+                            clean_text = clean_text[:-1]
+                        while clean_text.endswith(" "):
+                            clean_text = clean_text[:-1]
+                        word_parts += clean_text 
+                    # if(word):
+                    #     print(word.get_text(strip=True))
+                    #     if(len(word.contents) > 0):
+                    #         try: 
 
                             
-                                word = word.contents[0].text
-                            except Exception as e:
-                                print(repr(e))
+                    #             word = word.contents[0].text
+                    #         except Exception as e:
+                    #             print(repr(e))
 
-                        else:word = word.get_text(strip=True)
+                    #     else:word = word.get_text(strip=True)
 
-                        newEntry.word = word
+                    #     newEntry.word = word
+                        
+                    
+                    #print(word_parts)
+                    word = word_parts 
+                    newEntry.word = word
+                    
+                    
                     nitq_hissesi = h3.find("span", "nitq-hissesi")
                     orgin = h3.find("span","etimologiya")
                     if(orgin):
@@ -98,7 +138,7 @@ while page < endpage:
         time.sleep(1)  # Serverə yük olmaması üçün yüngül gecikmə
         if(page % 20 == 0):
             jsonText = json.dumps([entry.__dict__ for entry in all_data], ensure_ascii=False, indent=4)
-            with open("backup_data.json", "w") as f:
+            with open("backup_data.json", "w", encoding="utf-8") as f:
                 f.write(jsonText)
     except Exception as e:
         print(repr(e))
@@ -107,8 +147,8 @@ while page < endpage:
 
 jsonText = json.dumps([entry.__dict__ for entry in all_data], ensure_ascii=False, indent=4)
 # JSON formatında yadda saxla
-with open("azleks_data.json", "a", encoding="utf-8") as f:
+with open("DATAS/azleks_data.json", "w", encoding="utf-8") as f:
     f.write(jsonText)
 
 driver.quit()
-print(" Bütün sözlər uğurla yığıldı və fayla yazıldı.")
+print("-->Bütün sözlər uğurla yığıldı və fayla yazıldı.")
