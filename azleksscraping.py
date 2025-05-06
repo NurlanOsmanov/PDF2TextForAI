@@ -26,7 +26,7 @@ print(driver.title)
 
 # Məlumatların çəkilməsi
 endpage = 2463
-page = 1300
+page = 1760
 url_template = "https://www.azleks.az/online-dictionary/?s=4&page={}"
 all_data:list[dc.dictionary] = []
 
