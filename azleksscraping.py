@@ -8,6 +8,11 @@ import json
 import time
 import dictionaryclass as dc
 
+#chrome.exe --remote-debugging-port=9222 --user-data-dir="C:\chrome-temp"
+#google-chrome --remote-debugging-port=9222 --user-data-dir="/tmp/chrome-temp"
+
+
+
 # Chrome profili və ayarları
 options = Options()
 # options.add_argument("--no-first-run")
@@ -64,9 +69,12 @@ while page < endpage:
             for h3 in h3all:
                 if h3:
                     newEntry:dc.dictionary = dc.dictionary()
-                    
-                    
                     word_parts = ""
+                    
+                    if isinstance(h3, str):
+                        if h3.strip():
+                            word_parts += h3.strip()
+                    
                     for strong in h3.find_all('strong'):
                         # Orijinalı dəyişmədən nüsxə çıxar
                         strong_copy_html = str(strong)
@@ -91,22 +99,7 @@ while page < endpage:
                         while clean_text.endswith(" "):
                             clean_text = clean_text[:-1]
                         word_parts += clean_text 
-                    # if(word):
-                    #     print(word.get_text(strip=True))
-                    #     if(len(word.contents) > 0):
-                    #         try: 
-
-                            
-                    #             word = word.contents[0].text
-                    #         except Exception as e:
-                    #             print(repr(e))
-
-                    #     else:word = word.get_text(strip=True)
-
-                    #     newEntry.word = word
                         
-                    
-                    #print(word_parts)
                     word = word_parts 
                     newEntry.word = word
                     
