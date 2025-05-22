@@ -4,6 +4,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from bs4 import BeautifulSoup
+from bs4.element import NavigableString
 import json
 import time
 import dictionaryclass as dc
@@ -75,6 +76,11 @@ while page < endpage:
                         if h3.strip():
                             word_parts += h3.strip()
                     
+                    for child in h3.contents:
+                        if isinstance(child, NavigableString):  # Əgər sadə mətn parçasıdırsa
+                            word_parts += child.strip() + " "
+                            
+                            
                     for strong in h3.find_all('strong'):
                         # Orijinalı dəyişmədən nüsxə çıxar
                         strong_copy_html = str(strong)
