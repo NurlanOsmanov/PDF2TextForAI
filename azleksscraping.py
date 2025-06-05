@@ -3,7 +3,7 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup  
 from bs4.element import NavigableString
 import json
 import time
@@ -32,8 +32,8 @@ print(driver.title)
 
 # Məlumatların çəkilməsi
 endpage = 2463
-page = 1760
-url_template = "https://www.azleks.az/online-dictionary/?s=4&page={}"
+page = 2420
+url_template = "https://azleks.az/online-dictionary/?s=4&page={}"
 all_data:list[dc.dictionary] = []
 
 
@@ -137,7 +137,7 @@ while page < endpage:
         time.sleep(1)  # Serverə yük olmaması üçün yüngül gecikmə
         if(page % 20 == 0):
             jsonText = json.dumps([entry.__dict__ for entry in all_data], ensure_ascii=False, indent=4)
-            with open("backup_data.json", "w", encoding="utf-8") as f:
+            with open("backup_data.json", "a", encoding="utf-8") as f:
                 f.write(jsonText)
     except Exception as e:
         print(repr(e))

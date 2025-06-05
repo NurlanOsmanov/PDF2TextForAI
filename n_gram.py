@@ -2,14 +2,8 @@ import azenlp as nlp
 import json as js
 import dictionaryclass as dc
 
-
-def skip_grams(tokens, window_size=2):
-    pairs = []
-    for i, target in enumerate(tokens):
-        for j in range(max(0, i - window_size), min(len(tokens), i + window_size + 1)):
-            if i != j:
-                pairs.append((target, tokens[j]))
-    return pairs
+def generate_ngrams(tokens, n):
+    return [tuple(tokens[i:i+n]) for i in range(len(tokens)-n+1)]
 
 with open("DATAS/azleks_data.json", "r",encoding="utf8") as file:
     fullData = js.loads(file.read(), object_hook=lambda d: dc.dictionary(**d))
@@ -28,7 +22,4 @@ for des in fullData:
 tokens = []
 tokens = nlp.Tokenization(fullText)
 
-
-pairs = skip_grams(tokens, window_size=2)
-for pair in pairs:
-    print(pair)
+print(generate_ngrams(tokens, 2))
