@@ -15,11 +15,17 @@ for des in fullData:
     if des.explanation:
         fullText += " " + des.explanation
         i+=1
-    if i == 20: break
 
 #print(fullText)
 
 tokens = []
 tokens = nlp.Tokenization(fullText)
 
-print(generate_ngrams(tokens, 2))
+text = ""
+elements = generate_ngrams(tokens, 2)
+for item in elements:
+    text += "[" + item[0] + " , " + item[1] + "]\n"
+
+
+with open("DATAS/n_gram_data.json", "w",encoding="utf8") as file:
+    file.write(text)
