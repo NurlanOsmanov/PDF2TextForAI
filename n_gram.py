@@ -9,22 +9,27 @@ with open("DATAS/azleks_data.json", "r",encoding="utf8") as file:
     fullData = js.loads(file.read(), object_hook=lambda d: dc.dictionary(**d))
 
 fullText = ""
-
+print("Program basladi")
 i = 0
 for des in fullData:
     if des.explanation:
         fullText += " " + des.explanation
-        i+=1
+        # print(des.explanation)
+
 
 #print(fullText)
+print("Tokenlesmeye kecilir")
 
 tokens = []
 tokens = nlp.Tokenization(fullText)
 
+print("Tokenlesme bitti, ngrama kecilir")
 text = ""
 elements = generate_ngrams(tokens, 2)
 for item in elements:
-    text += "[" + item[0] + " , " + item[1] + "]\n"
+    exp = "[" + item[0] + " , " + item[1] + "]\n"
+    text += exp
+    # print(exp)
 
 
 with open("DATAS/n_gram_data.json", "w",encoding="utf8") as file:
