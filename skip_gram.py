@@ -1,4 +1,4 @@
-import azenlp as nlp
+import nltk as nlp
 import json as js
 import dictionaryclass as dc
 
@@ -21,14 +21,21 @@ for des in fullData:
     if des.explanation:
         fullText += " " + des.explanation
         i+=1
-    if i == 20: break
 
 #print(fullText)
 
-tokens = []
-tokens = nlp.Tokenization(fullText)
-
-
+tokens = nlp.tokenize.word_tokenize(fullText)
 pairs = skip_grams(tokens, window_size=2)
-for pair in pairs:
-    print(pair)
+
+print("Skip-gram bitti, " + str(len(pairs)) + " cüt tapıldı")
+
+text = ""
+
+for item in pairs:
+    exp = "[" + item[0] + " , " + item[1] + "]\n"
+    text += exp
+    # print(exp)
+
+
+with open("DATAS/skip_gram_data.txt", "w",encoding="utf8") as file:
+    file.write(text)
