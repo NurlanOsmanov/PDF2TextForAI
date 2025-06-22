@@ -34,7 +34,7 @@ text = ""
 for item in pairs:
     exp = "[" + item[0] + " , " + item[1] + "]\n"
     text += exp
-    # print(exp)
+    print(exp)
 
 
 with open("DATAS/skip_gram_data.txt", "w",encoding="utf8") as file:

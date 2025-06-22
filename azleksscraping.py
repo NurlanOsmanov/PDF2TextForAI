@@ -151,3 +151,20 @@ with open("DATAS/azleks_data.json", "w", encoding="utf-8") as f:
 
 driver.quit()
 print("-->Bütün sözlər uğurla yığıldı və fayla yazıldı.")
+
+
+while page < endpage:
+    try:
+        
+        #-------------Proqram olan hissə----------------
+        
+        time.sleep(1)  # Serverə yük olmaması üçün yüngül gecikmə
+        
+        if(page % 20 == 0):
+            jsonText = json.dumps([entry.__dict__ for entry in all_data], ensure_ascii=False, indent=4)
+            with open("backup_data.json", "w", encoding="utf-8") as f:
+                f.write(jsonText)
+                
+    except Exception as e:
+        print(repr(e))
+        time.sleep(5)  # Serverə yük olmaması üçün yüngül gecikmə

@@ -2,16 +2,15 @@ import dictionaryclass as dc
 import json as js
 
 
-fullData:list[dc.dictionary] = []
+fullData = []
 
-with open("DATAS/azleks_data.json", "r",encoding="utf8") as file:
-    fullData = js.loads(file.read(), object_hook=lambda d: dc.dictionary(**d))
+with open("tokens_exp.json", "r",encoding="utf8") as file:
+    fullData = js.loads(file.read())
     
     
 bosCount = 0
 for i in fullData:
-    if len(i.word) == 0:
-        bosCount += 1
+    i = i.lower()
         
-        
-print("Data yuklendi " + str(len(fullData)) + " eded soz var, " + str(bosCount) + " eded bos soz var")
+with open("tokens_exp_low.txt", "w",encoding="utf8") as file:
+    js.dump(fullData, file, ensure_ascii=False)

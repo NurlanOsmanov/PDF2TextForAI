@@ -1,0 +1,602 @@
+[
+    {
+        "word": "a1",
+        "type": "nida",
+        "origin": "",
+        "explanation": "1.Xitab bildirən sözlərə qoşularaq müraciətə məmnunluq, narazılıq, təəccüb çaları gətirən köməkçi söz; “ay” nidasının qısaldılmış şəkli.□A dostlar!A balam! A quşlarım, getməyin; Məni qəmgin etməyin! (A.Səhhət) 2.Həyəcan, dəhşət, qorxu, peşmanlıq və s. ifadə edən səs (uzadılaraq xüsusi intonasiya ilə deyilir).□Aaa, mən nə etdim! Aaa, bu necə adamdır! "
+    },
+    {
+        "word": "ab",
+        "type": "isim",
+        "origin": "fars",
+        "explanation": "1.Arxaizm.Su. 2.Arxaizm.Məcazi mənada: göz yaşı.□Bu səmavi gözü yağdırmadaab. (M.Hadi)  Azərbaycan dilinin izahlı lüğəti "
+    },
+    {
+        "word": "ab-hava",
+        "type": "isim",
+        "origin": "fars/ərəb",
+        "explanation": "1.Bir yerin, ölkənin iqlimi, təbii şəraiti (suyu, havası, temperaturu).□Vətənimin daşına da, torpağına da, ab-havasına da qurban olum! 2.Məcazi mənada: insanların olduğu bir yer, məkan haqda xoş və ya pis təəssürat, aura.□Evin ab-havası elə pis idi ki, heç adam orada qalmaq istəmirdi.  Azərbaycan dilinin izahlı lüğəti "
+    },
+    {
+        "word": "ab-havalı",
+        "type": "sifət",
+        "origin": "",
+        "explanation": "Yaxşı iqlimi olan, səfalı.□Gələn il gözəl ab-havalı bir yerə getmək niyyətindəyəm.  Azərbaycan dilinin izahlı lüğəti "
+    },
+    {
+        "word": "aba1",
+        "type": "isim",
+        "origin": "ərəb",
+        "explanation": "Arxaizm.Müsəlman ruhanilərinin və mömin adamların üstdən geydikləri qolsuz və ya gödəkqollu, yaxası açıq uzun kişi paltarı; əba.□Molla nazik, ağ abasını çiyinlərində oynadaraq: - Buna heç şəkk-şübhə ola bilməz. (S.Rəhimov). "
+    },
+    {
+        "word": "aba",
+        "type": "isim",
+        "origin": "ərəb",
+        "explanation": "Atalar, ata-baba.  Azərbaycan dilinin izahlı lüğəti "
+    },
+    {
+        "word": "abad",
+        "type": "sifət",
+        "origin": "fars",
+        "explanation": "1.Yaşayış üçün hər cür şəraiti olan, səliqəli, mədəni, yaxşı təchiz olunmuş.□Abad ölkə. Abad küçə. Zülmlə abad olanın axırı bərbad olar. (Atalar sözü). 2.Arxaizm.Məcazi mənada: şən, şad.□Abad məclis aşığından bəllidir. (Atalar sözü).  Azərbaycan dilinin izahlı lüğəti "
+    },
+    {
+        "word": "...abad",
+        "type": "",
+        "origin": "fars",
+        "explanation": "Xüsusi isimlərə qoşularaq şəhər, kənd, yer adları düzəldilir; məs.:Cəlilabad, Sabirabadvə s.  Azərbaycan dilinin izahlı lüğəti "
+    },
+    {
+        "word": "abadan",
+        "type": "",
+        "origin": "",
+        "explanation": "Bax:abad.  Azərbaycan dilinin izahlı lüğəti "
+    },
+    {
+        "word": "abadanlaşdırılmaq",
+        "type": "",
+        "origin": "",
+        "explanation": "Bax:abadlaşdırılmaq.  Azərbaycan dilinin izahlı lüğəti "
+    },
+    {
+        "word": "abadanlaşdırmaq",
+        "type": "",
+        "origin": "",
+        "explanation": "Bax:abadlaşdırmaq.  Azərbaycan dilinin izahlı lüğəti "
+    },
+    {
+        "word": "abadanlaşmaq",
+        "type": "",
+        "origin": "",
+        "explanation": "Bax:abadlaşmaq.  Azərbaycan dilinin izahlı lüğəti "
+    },
+    {
+        "word": "abadanlıq",
+        "type": "",
+        "origin": "",
+        "explanation": "Bax:abadlıq.  Azərbaycan dilinin izahlı lüğəti "
+    },
+    {
+        "word": "abadlaşdırılma",
+        "type": "",
+        "origin": "",
+        "explanation": "Bax:abadlaşdırılmaq.  Azərbaycan dilinin izahlı lüğəti "
+    },
+    {
+        "word": "abadlaşdırılmaq",
+        "type": "feil",
+        "origin": "",
+        "explanation": "Abadlaşdırmaq feilinin məchul növü.□Üstündən neçə illər keçəndən sonra qədim şəhər yenidən abadlaşdırılmışdı.  Azərbaycan dilinin izahlı lüğəti "
+    },
+    {
+        "word": "abadlaşdırma",
+        "type": "",
+        "origin": "",
+        "explanation": "Bax:abadlaşdırmaq.  Azərbaycan dilinin izahlı lüğəti "
+    },
+    {
+        "word": "abadlaşdırmaq",
+        "type": "feil",
+        "origin": "",
+        "explanation": "Abad etmək, yaxşılaşdırmaq, yaşayış üçün lazım olan hər cür şəraitlə təmin etmək.  Azərbaycan dilinin izahlı lüğəti "
+    },
+    {
+        "word": "abadlaşma",
+        "type": "",
+        "origin": "",
+        "explanation": "Bax:abadlaşmaq.  Azərbaycan dilinin izahlı lüğəti "
+    },
+    {
+        "word": "abadlaşmaq",
+        "type": "feil",
+        "origin": "",
+        "explanation": "Abad olmaq, yaxşılaşmaq, yaşayış üçün lazım olan hər cür şəraitlə təmin olunmaq.□Kəndimiz gündən-günə abadlaşır, gözəlləşir.  Azərbaycan dilinin izahlı lüğəti "
+    },
+    {
+        "word": "abadlıq",
+        "type": "isim",
+        "origin": "",
+        "explanation": "1.Hər hansı bir yerdə əhalinin yaşayışına lazım olan şərait və vəsait.□Bu qəsəbənin abadlığına ciddi fikir verilir. 2.Abad yer, yaşayış yeri, yaşayış üçün yararlı yer.□İnsan abadlıq, bayquş xarabalıq sevər. 3.Arxaizm.Məcazi mənada: ruh rahatlığı, dərdsizlik, qayğısızlıq.□Hiç rəng ilə mənə abadlıq mümkün deyil. (M.Füzuli).  Azərbaycan dilinin izahlı lüğəti "
+    },
+    {
+        "word": "abaft",
+        "type": "isim",
+        "origin": "",
+        "explanation": "Toxuculuq.Qalın və kobud toxunuşlu palaz və ya parça.  Azərbaycan dilinin izahlı lüğəti "
+    },
+    {
+        "word": "abajur",
+        "type": "isim",
+        "origin": "fransız",
+        "explanation": "Gözü işıqdan qorumaq üçün lampaya keçirilən örtük, qalpaq.□ İpək abajur. Şüşə abajur.  Azərbaycan dilinin izahlı lüğəti "
+    },
+    {
+        "word": "abajurlu",
+        "type": "sifət",
+        "origin": "",
+        "explanation": "Abajuru olan, üstü abajurla örtülü.□Abajurlu lampa.  Azərbaycan dilinin izahlı lüğəti "
+    },
+    {
+        "word": "abak",
+        "type": "isim",
+        "origin": "yunan",
+        "explanation": "1.Memarlıq.Sütun başlığının dördbucaqlı şəklində olan yuxarı hissəsi.2.Qədim yunanların və romalıların hesab lövhəsi.  Azərbaycan dilinin izahlı lüğəti "
+    },
+    {
+        "word": "abalı",
+        "type": "isim",
+        "origin": "ərəb",
+        "explanation": "Arxaizm.Aba geymiş, əynində aba olan. □Abalı kişi.  Azərbaycan dilinin izahlı lüğəti "
+    },
+    {
+        "word": "abandon",
+        "type": "isim",
+        "origin": "fransız",
+        "explanation": "Hüquq. İqtisadiyyat.Sığortalanmış yük və ya gəmi sahibinin yüz faiz sığorta məbləğini almaq şərti ilə yükündən və ya gəmisindən sığorta edənin xeyrinə imtina etməsi.  Azərbaycan dilinin izahlı lüğəti "
+    },
+    {
+        "word": "abanı",
+        "type": "isim",
+        "origin": "",
+        "explanation": "Toxuculuq.Qurşaq, çalma və s. üçün istifadə edilən sarımtıl ipək parça.  Azərbaycan dilinin izahlı lüğəti "
+    },
+    {
+        "word": "abasbəyi",
+        "type": "isim",
+        "origin": "",
+        "explanation": "Çox şirin, şirəli, ətirli yay armudu növü.□Evində qaldığımız kişi bir yeşik abasbəyi armudu pay göndərib.  Azərbaycan dilinin izahlı lüğəti "
+    },
+    {
+        "word": "abası",
+        "type": "",
+        "origin": "",
+        "explanation": "Bax:abbası.  Azərbaycan dilinin izahlı lüğəti "
+    },
+    {
+        "word": "abasılıq",
+        "type": "",
+        "origin": "",
+        "explanation": "Bax:abbasılıq.  Azərbaycan dilinin izahlı lüğəti "
+    },
+    {
+        "word": "abavü əcdadisimərəb",
+        "type": "isim",
+        "origin": "ərəb",
+        "explanation": "Arxaizm.Ata və babalar, ata-baba.  Azərbaycan dilinin izahlı lüğəti "
+    },
+    {
+        "word": "abaziya",
+        "type": "",
+        "origin": "yun.a –inkar bildirən sözönü + yun.basis– gediş, bünövrə",
+        "explanation": "yun.a –inkar bildirən sözönü + yun.basis– gediş, bünövrə Əsəb sisteminin pozulması ilə bağlı xəstəliklər nəticəsində insanın yerimək qabiliyyətini itirməsi.□ Abaziya xəstəliyi.  Azərbaycan dilinin izahlı lüğəti "
+    },
+    {
+        "word": "abbası",
+        "type": "isim",
+        "origin": "fars",
+        "explanation": "1.Dördşahılıq (iyirmiqəpiklik) metal pul. 2.Tarix.İranda Şah Abbas dövrünə aid sikkə (gümüş pul).  Azərbaycan dilinin izahlı lüğəti "
+    },
+    {
+        "word": "abbasılıq",
+        "type": "isim",
+        "origin": "",
+        "explanation": "İyirmiqəpiklik, abbası dəyərində olan.  Azərbaycan dilinin izahlı lüğəti "
+    },
+    {
+        "word": "abbat",
+        "type": "isim",
+        "origin": "",
+        "explanation": "1.İlahiyyat.Katolik kilsəsinin başçısı; rahib, rahibə. 2.İlahiyyat.Katolik kilsədə dini rütbə; rahib.  Azərbaycan dilinin izahlı lüğəti "
+    },
+    {
+        "word": "abbatlıq",
+        "type": "isim",
+        "origin": "yəhudi",
+        "explanation": "İlahiyyat.Abbatın idarə etdiyi katolik kilsə.  Azərbaycan dilinin izahlı lüğəti "
+    },
+    {
+        "word": "abcoisimfars",
+        "type": "isim",
+        "origin": "fars",
+        "explanation": "Arxaizm.Pivə.  Azərbaycan dilinin izahlı lüğəti "
+    },
+    {
+        "word": "abçin",
+        "type": "isim",
+        "origin": "",
+        "explanation": "Toxuculuq.Ölünün bədənini yuyarkən bədəni qurutmaq üçün istifadə edilən pambıq parça.  Azərbaycan dilinin izahlı lüğəti "
+    },
+    {
+        "word": "abdalisimərəb",
+        "type": "isim",
+        "origin": "ərəb",
+        "explanation": "1.Arxaizm.Sərsəri, avara, dərbədər.□Abdaldan paşa olmaz, taxtadan – maşa. (Atalar sözü) 2.Arxaizm.Dərviş, qələndər. Sufiyəm, əmma nə buabdaldən, Haq sevən insanəm, a şirvanlılar! (M.Ə.Sabir)  Azərbaycan dilinin izahlı lüğəti "
+    },
+    {
+        "word": "abdalcasına",
+        "type": "zərf",
+        "origin": "",
+        "explanation": "Axmaqcasına, qeyri-ciddi, səfeh.  Azərbaycan dilinin izahlı lüğəti "
+    },
+    {
+        "word": "abdallaşmaq",
+        "type": "feil",
+        "origin": "",
+        "explanation": "Abdal olmaq, sərsəri olmaq.  Azərbaycan dilinin izahlı lüğəti "
+    },
+    {
+        "word": "abdallıq",
+        "type": "isim",
+        "origin": "",
+        "explanation": "Axmaqlıq, sərsərilik, səfillik.  Azərbaycan dilinin izahlı lüğəti "
+    },
+    {
+        "word": "abdarsifətfars",
+        "type": "sifət",
+        "origin": "fars",
+        "explanation": "1.Arxaizm.Sulu, şirəli, təravətli, lətafətli.□ Nazənin qız .. yanaqları kimi qızarmış bir qızılgül dərib, şirmayı əli iləabdarləblərinə yaxınlaşdıraraq .. hovuz üstünə atılıb, qurulan kürsünün üstündə oturdu. (C.Cabbarlı) 2.Arxaizm.Məcazi mənada: mənalı, təsirli, gözəl ifadəli.□ – Pəh-pəh, doğrudan da, zalım oğlunun necəabdarqələmi var. (C.Məmmədquluzadə) 3.Arxaizm.Məcazi mənada: möhkəm və iti.□ Çox məni incitmə, tiği-abidarımdan saqın! (M.Füzuli)  Azərbaycan dilinin izahlı lüğəti "
+    },
+    {
+        "word": "abdarlıq",
+        "type": "isim",
+        "origin": "",
+        "explanation": "Arxaizm.Mənalılıq, parlaqlıq, gözəllik, təravət.□Kəlamın abdarlığı.  Azərbaycan dilinin izahlı lüğəti "
+    },
+    {
+        "word": "abdəstisimfars",
+        "type": "isim",
+        "origin": "fars",
+        "explanation": "\"Dəstəmaz\" sözünün klassik ədəbiyyatda işlənmiş forması.  Azərbaycan dilinin izahlı lüğəti "
+    },
+    {
+        "word": "abdəstxanaisimfars",
+        "type": "isim",
+        "origin": "fars",
+        "explanation": "Arxaizm.Ayaqyolu, tualet.  Azərbaycan dilinin izahlı lüğəti "
+    },
+    {
+        "word": "abdəstxanə",
+        "type": "",
+        "origin": "",
+        "explanation": "Bax:abdəstxana.  Azərbaycan dilinin izahlı lüğəti "
+    },
+    {
+        "word": "abduq",
+        "type": "isim",
+        "origin": "",
+        "explanation": "Su qatılmış qatıq; atılama, ayran.  Azərbaycan dilinin izahlı lüğəti "
+    },
+    {
+        "word": "aberrasiya",
+        "type": "isim",
+        "origin": "lat.aberratio –azma, yanıltma",
+        "explanation": "1.Normadan kənara çıxma.□ Aberrasiya hadisəsi. 2.Fizika.Optik sistemdə (mikroskop, teleskop, foto, telekamera və s.) görüntünün müxtəlif səbəblərdən təhrif olunması.□ Təsvirdə aberrasiya. 3.Fizika.İşıq mənbəyinin hərəkəti və ya işıqlandırılan predmetin (obyektin) yerdəyişməsi səbəbindən şüanın yaratdığı təhrif görüntülər.□ Şüa aberrasiyası. 4.Biologiya.Bəzi heyvan qrupları sistematikasında (başlıca olaraq kəpənək, böcək və balıqlarda) taksonomik infrayarımnöv kateqoriya. 5.Biologiya.Genetik materialların qırılaraq yenidən bölünməsi, itməsi və ya qismən ikiləşməsi; həmçinin xromosomların yenidən qurulması.  Azərbaycan dilinin izahlı lüğəti "
+    },
+    {
+        "word": "abgahisimfars",
+        "type": "isim",
+        "origin": "fars",
+        "explanation": "Arxaizm.Su saxlanan yer; gölcük, nohur.  Azərbaycan dilinin izahlı lüğəti "
+    },
+    {
+        "word": "abgərdan",
+        "type": "isim",
+        "origin": "fars",
+        "explanation": "Misdən, alüminiumdan və s.-dən düzəldilmiş uzunsaplı çömçə.□Abgərdanı götürüb hamının boşqabına əriştə qoydu.  Azərbaycan dilinin izahlı lüğəti "
+    },
+    {
+        "word": "abguştisimfars",
+        "type": "isim",
+        "origin": "fars",
+        "explanation": "Arxaizm.Ətsuyu, bozbaş.  Azərbaycan dilinin izahlı lüğəti "
+    },
+    {
+        "word": "abgün",
+        "type": "sifət",
+        "origin": "",
+        "explanation": "Toxuculuq.Su və göy rəngi, mavi.  Azərbaycan dilinin izahlı lüğəti "
+    },
+    {
+        "word": "abgüşt",
+        "type": "isim",
+        "origin": "fars",
+        "explanation": "Arxaizm.Bozbaş, piti.  Azərbaycan dilinin izahlı lüğəti "
+    },
+    {
+        "word": "abı",
+        "type": "sifət",
+        "origin": "",
+        "explanation": "Açıq-göy, mavi.□ Abı paltar. Abı kağız.  Azərbaycan dilinin izahlı lüğəti "
+    },
+    {
+        "word": "abıca",
+        "type": "isim",
+        "origin": "",
+        "explanation": "Zoologiya.Göy arıquşu.  Azərbaycan dilinin izahlı lüğəti "
+    },
+    {
+        "word": "abır",
+        "type": "isim",
+        "origin": "fars",
+        "explanation": "1.Həya, heysiyyət, şərəf, hörmət, qədir-qiymət.□ Abır istəsən çox demə, sağlıq istəsən çox yemə. (Atalar sözü). 2.Məcazi mənada: üst-baş, geyim, qiyafət, zahiri görünüş.□ Bizə bir abırda gəlmişdi ki, gəl görəsən. 3.Məcazi mənada: bədənin məhrəm (örtülü, ayıb) yeri.  Həmçinin bax:frazeologizmabır gözləməkfrazeologizmabır qoymamaqfrazeologizmabırdan düşməkfrazeologizmabırdan salmaqfrazeologizmabra düşməkfrazeologizmabra mindirməkfrazeologizmabra salmaqfrazeologizmabrı getmək (tökülmək)frazeologizmabrına qısılmaqfrazeologizmabrını çölə atmaqfrazeologizmabrını ətəyinə bükməkfrazeologizmabrını itə atmaqfrazeologizmabrını tökmək (aparmaq)frazeologizmabrını vermək (almaq)frazeologizmhəyanı yeyib abrını tullamaqfrazeologizmitin abrını verməkfrazeologizmməscidin qapısı açıqdır, itin abrına nə gəlibfrazeologizmüzündə abır olmamaq Azərbaycan dilinin izahlı lüğəti "
+    },
+    {
+        "word": "abır-həya",
+        "type": "isim",
+        "origin": "",
+        "explanation": "Həya, heysiyyət, şərəf, hörmət, qədir-qiymət.□ Ay bala, adamda abır-həya da yaxşı şeydi.  Həmçinin bax:frazeologizmabır-həya saxlamaqfrazeologizmabır-həyanı itirməkfrazeologizmüzündə abır-həya olmamaq Azərbaycan dilinin izahlı lüğəti "
+    },
+    {
+        "word": "abırlamaq",
+        "type": "feil",
+        "origin": "",
+        "explanation": "Bərk danlamaq, abır vermək, töhmət etmək, məzəmmət etmək.□Məni boş yerə abırlamağından təngə gəlmişəm.  Azərbaycan dilinin izahlı lüğəti "
+    },
+    {
+        "word": "abırlanmaq",
+        "type": "feil",
+        "origin": "",
+        "explanation": "Düzəlmək, islah olunmaq, abıra düşmək.  Azərbaycan dilinin izahlı lüğəti "
+    },
+    {
+        "word": "abırlı",
+        "type": "sifət",
+        "origin": "",
+        "explanation": "1.Həyalı, ismətli, utancaq, namuslu.□Abırlı qadınlara həmişə hörmət qoyulur. 2.Məcazi mənada: yaxşı, münasib, səliqəli.□Abırlı geyim-kecim. Abırlı paltar. O, həmişə hər yerə abırlı geyinərdi.  Azərbaycan dilinin izahlı lüğəti "
+    },
+    {
+        "word": "abırsız",
+        "type": "sifət",
+        "origin": "",
+        "explanation": "Həyasız, utanmaz, ədəbsiz.□ Qonşun çox abırsız adamdır, heç danışığını bilmir. Abırsızdan abrını saxla! (Atalar sözü).  Azərbaycan dilinin izahlı lüğəti "
+    },
+    {
+        "word": "abırsız-abırsız",
+        "type": "zərf",
+        "origin": "",
+        "explanation": "Utanmadan, abır-həya gözləmədən, ədəbdən kənar.  Azərbaycan dilinin izahlı lüğəti "
+    },
+    {
+        "word": "abırsızlıq",
+        "type": "isim",
+        "origin": "",
+        "explanation": "Həyasızlıq, utanmazlıq, ədəbsizlik.□Hamı onu abırsızlıqda ittiham edirdi.  Azərbaycan dilinin izahlı lüğəti "
+    },
+    {
+        "word": "abi-bəqa",
+        "type": "",
+        "origin": "",
+        "explanation": "Bax:abi-həyat.  Azərbaycan dilinin izahlı lüğəti "
+    },
+    {
+        "word": "abi-heyvan",
+        "type": "",
+        "origin": "",
+        "explanation": "Bax:abi-həyat. Hər kimin aləmdə miqdarıncadır təbində meyl, Mən ləbi-cananimi, Xizrabi-heyvanın sevər. (M.Füzuli)  Azərbaycan dilinin izahlı lüğəti "
+    },
+    {
+        "word": "abi-həyatisimfars/ərəb",
+        "type": "isim",
+        "origin": "fars/ərəb",
+        "explanation": "Arxaizm.Həyat suyu, dirilik suyu (əfsanələrə görə guya zülmətdə olan bir çeşmənin suyudur ki, bunu içən heç ölməzmiş).  Azərbaycan dilinin izahlı lüğəti "
+    },
+    {
+        "word": "abi-kövsərisimfars/ərəb",
+        "type": "isim",
+        "origin": "fars/ərəb",
+        "explanation": "1.Arxaizm.Dini əfsanəyə görə guya behiştdə olan bir çayın suyu. 2.Arxaizm.Məcazi mənada: içki.  Azərbaycan dilinin izahlı lüğəti "
+    },
+    {
+        "word": "abi-leysan",
+        "type": "",
+        "origin": "",
+        "explanation": "Bax:abi-niysan.  Azərbaycan dilinin izahlı lüğəti "
+    },
+    {
+        "word": "abi-mirvaridisimfars",
+        "type": "isim",
+        "origin": "fars",
+        "explanation": "Gözə gələn qara su, katarakta.  Azərbaycan dilinin izahlı lüğəti "
+    },
+    {
+        "word": "abi-zindəgifars",
+        "type": "",
+        "origin": "fars",
+        "explanation": "Bax:abi-həyat.  Azərbaycan dilinin izahlı lüğəti "
+    },
+    {
+        "word": "abi-zülalisimfars/ərəb",
+        "type": "isim",
+        "origin": "fars/ərəb",
+        "explanation": "Arxaizm.Sərin, duru su.  Azərbaycan dilinin izahlı lüğəti "
+    },
+    {
+        "word": "abidisimərəb",
+        "type": "isim",
+        "origin": "ərəb",
+        "explanation": "Arxaizm. İlahiyyat.İbadətlə məşğul olan adam, vaxtını ibadətlə keçirən adam.□ ..Birabidpeyda olub, bunun ismi-şərifi Şeyx Nəsrulladır. (C.Məmmədquluzadə)  Azərbaycan dilinin izahlı lüğəti "
+    },
+    {
+        "word": "abidanəzərfərəb/fars",
+        "type": "zərf",
+        "origin": "ərəb/fars",
+        "explanation": "Arxaizm.Abid kimi, özünü abidə oxşadaraq.  Azərbaycan dilinin izahlı lüğəti "
+    },
+    {
+        "word": "abidə",
+        "type": "isim",
+        "origin": "ərəb",
+        "explanation": "1.Tarixi hadisəyə və ya şəxsə xatirə olaraq qoyulan heykəl, nişangah və s.□“Ana harayı” abidəsi. 2.Qədim dövrlərə aid mədəniyyət əsəri.□Arxeoloji abidələr. Yazılı abidələr. Şəki xan sarayı Azərbaycan maddi mədəniyyətinin ən qiymətli aibidələrindəndir. 3.Məcazi mənada: yadigar.□Onu özüm çəkmişəm, haman şəkil mənim son sevgilimin unudulmaz abidəsidir (M.S.Ordubadi)  Azərbaycan dilinin izahlı lüğəti "
+    },
+    {
+        "word": "abidlikisim",
+        "type": "isim",
+        "origin": "",
+        "explanation": "Arxaizm. İlahiyyat.İbadətlə məşğul olma, zahidlik.  Azərbaycan dilinin izahlı lüğəti "
+    },
+    {
+        "word": "abiogenez",
+        "type": "isim",
+        "origin": "",
+        "explanation": "Biologiya.Canlıların cansız təbiətdən öz-özünə qəflətən törəməsi haqqında qədim yanlış nəzəriyyə.  Azərbaycan dilinin izahlı lüğəti "
+    },
+    {
+        "word": "abiotik",
+        "type": "sifət",
+        "origin": "yunan",
+        "explanation": "Coğrafiya.Cansız, həyat əlaməti olmayan.  Həmçinin bax:coğrafiyaabiotik amillər Azərbaycan dilinin izahlı lüğəti "
+    },
+    {
+        "word": "abisin",
+        "type": "isim",
+        "origin": "",
+        "explanation": "Tibb.Ürək qapaqlarının qüsuru zamanı işlədilən dərman preparatı.  Azərbaycan dilinin izahlı lüğəti "
+    },
+    {
+        "word": "abissal",
+        "type": "isim",
+        "origin": "yunan",
+        "explanation": "Coğrafiya.Okean dibinin 3000 m-dən dərin olan hissəsi.  Həmçinin bax:coğrafiyaabissal çöküntülərcoğrafiyaabissal düzənliklərcoğrafiyaabissal zona Azərbaycan dilinin izahlı lüğəti "
+    },
+    {
+        "word": "abituriyent",
+        "type": "isim",
+        "origin": "alm.abiturient< lat.abituriens– getməyə hazırlaşan",
+        "explanation": "Orta məktəbi bitirmiş, ali, yaxud orta ixtisas məktəbinə daxil olmağa hazırlaşan şəxs.□ Abituriyent vəsiqəsi.  Azərbaycan dilinin izahlı lüğəti "
+    },
+    {
+        "word": "ablyasiya",
+        "type": "isim",
+        "origin": "latın",
+        "explanation": "1.Fizika.Bərk cismin səthindən axıb keçən qızğın qaz selinin həmin səthdən kütlə ayırması. 2.Coğrafiya.Buzlaq kütləsinin ərimə, buxarlanma və ya mexaniki parçalanma yolu ilə azalması. 3.Geologiya.Qaya süxurlarının külək və suyun təsiri ilə azalması, yuyulması.  Azərbaycan dilinin izahlı lüğəti "
+    },
+    {
+        "word": "abnos",
+        "type": "isim",
+        "origin": "fars",
+        "explanation": "Botanika.Qara rəngli çox bərk oduncaqlı ağac.  Azərbaycan dilinin izahlı lüğəti "
+    },
+    {
+        "word": "abnus",
+        "type": "",
+        "origin": "",
+        "explanation": "Bax:abnos.  Azərbaycan dilinin izahlı lüğəti "
+    },
+    {
+        "word": "abolisionist",
+        "type": "isim",
+        "origin": "lat.abolitio– məhvetmə, ləğvetmə",
+        "explanation": "Tarix.Köləliyə qarşı çıxan, abolisionizm tərəfdarı.  Azərbaycan dilinin izahlı lüğəti "
+    },
+    {
+        "word": "abolisionizm",
+        "type": "isim",
+        "origin": "lat.abolitio– məhvetmə, ləğvetmə",
+        "explanation": "1.Politologiya.Hər hansı hədsiz məhdudlaşdırıcı qanunun ləğvinə çalışan ictimai hərəkat. □Abolisionizm hərəkatı. 2.Tarix.XVIII-XIX əsrlərdə ABŞ-da, sonralar isə İngiltərə, Fransa və Avropanın bir sıra digər ölkələrində köləliyin ləğvi uğrunda gedən mübarizə. □Abolisionizm dalğası.  Azərbaycan dilinin izahlı lüğəti "
+    },
+    {
+        "word": "abolisiya",
+        "type": "isim",
+        "origin": "latın/ingilis",
+        "explanation": "1.Hüquq.Qanunun, yaxud hüquqi aktın ləğvi. 2.Hüquq.Hər hansı bir vəzifənin ləğvi və ya vəzifədən istefa vermə. 3.Hüquq.Hərəkətdə cinayət tərkibi sübut olunmadığından məhkəmə işinə xitam verilməsi. 4.Hüquq.Ləkələnmiş şərəf və ləyaqətin bərpa olunması, böhtanın rəsmən təkzib edilməsi.  Azərbaycan dilinin izahlı lüğəti "
+    },
+    {
+        "word": "abonement",
+        "type": "isim",
+        "origin": "fr.abonnement– yazılmaq, üzv olmaq",
+        "explanation": "Nəqliyyat vasitələrindən, idman qurğularından (stadion, üzgüçülük hovuzu və s.), habelə rabitə-kommunikasiya vasitələrindən (telefon, televiziya, internet) və s. müəyyən müddət ərzində istifadə etmək hüququ; bu hüququ təsdiq edən sənəd.□ Aylıq abonement.  Azərbaycan dilinin izahlı lüğəti "
+    },
+    {
+        "word": "abonent",
+        "type": "isim",
+        "origin": "alm.abonnent",
+        "explanation": "1.Abonementdən istifadə edən şəxs.□Abonenti olmaq. 2.Telefonun sahibi olan şəxs və ya idarə.□Abonent məşğuldur.  Həmçinin bax:jurnalistikaabonent şəbəkəsijurnalistikakabel televiziyası abonenti Azərbaycan dilinin izahlı lüğəti "
+    },
+    {
+        "word": "abordaj",
+        "type": "isim",
+        "origin": "fr.abordage– gəmi bortu",
+        "explanation": "Avarlı və yelkənli gəmilərdə tətbiq edilən dəniz döyüşü üsulu.□Abordaj zamanı düşmən gəmisi qarmaq atılaraq yaxına çəkilir və əlbəyaxa döyüş aparılır.  Azərbaycan dilinin izahlı lüğəti "
+    },
+    {
+        "word": "aborigen",
+        "type": "isim",
+        "origin": "latın",
+        "explanation": "1.Biologiya.Təkamül prosesində əmələ gəldiyi yerdə indi də yaşayan orqanizm. □Qarışqayeyən və yabanı kartof Cənubi Amerika aborigenləridir. 2.Politologiya.Coğrafiya.Müəyyən ərazidə qədimdən məskən salmış yerli sakinlər. □Aborigen rəqsi.  Azərbaycan dilinin izahlı lüğəti "
+    },
+    {
+        "word": "abort",
+        "type": "isim",
+        "origin": "latın",
+        "explanation": "Tibb.Hamiləliyin təbii və ya süni surətdə dayandırılması.  Azərbaycan dilinin izahlı lüğəti "
+    },
+    {
+        "word": "abortiv",
+        "type": "isim",
+        "origin": "latın",
+        "explanation": "1.Hər hansı bir prosesin inkişafının dayanması. 2.Tibb.Xəstəliyin gedişini dayandıran və sürətli müalicə üçün istifadə olunan dərmanlar.□Abortiv dərmanlar.  Azərbaycan dilinin izahlı lüğəti "
+    },
+    {
+        "word": "abpaşisimfars",
+        "type": "isim",
+        "origin": "fars",
+        "explanation": "Arxaizm.Ağzı süzgəcli alət; susəpən, suçiləyən.  Azərbaycan dilinin izahlı lüğəti "
+    },
+    {
+        "word": "abqora",
+        "type": "isim",
+        "origin": "fars",
+        "explanation": "Qoradan hazırlanan turşu; qora suyu, kal üzümün şirəsi.□Şəkər xəstələri hər səhər acqarına 30 q abqora içsələr, onların şəkəri aşağı düşər.  Azərbaycan dilinin izahlı lüğəti "
+    },
+    {
+        "word": "abqoralıq",
+        "type": "isim",
+        "origin": "",
+        "explanation": "Suyunu sıxmaq üçün nəzərdə tutulmuş kal üzüm.  Azərbaycan dilinin izahlı lüğəti "
+    },
+    {
+        "word": "abrazion",
+        "type": "isim",
+        "origin": "",
+        "explanation": "Bax:abraziya.  Azərbaycan dilinin izahlı lüğəti "
+    },
+    {
+        "word": "abraziya",
+        "type": "isim",
+        "origin": "latın",
+        "explanation": "Geologiya.Dəniz dalğalarının davamlı olaraq sahilboyu süxurları ovaraq dağıdıb parçalaması. □Dənizdə suyun səviyyəsi artdıqca, yaxud sahil zolağı çökdükcə abraziya prosesi şiddətlənir.  Həmçinin bax:coğrafiyaabraziya düzənliyicoğrafiyaabraziya sütunucoğrafiyaabraziya terrasıcoğrafiyaabraziya yarğanı Azərbaycan dilinin izahlı lüğəti "
+    },
+    {
+        "word": "abrek",
+        "type": "isim",
+        "origin": "",
+        "explanation": "Arxaizm.Qaçaq, qanunlara tabe olmayan adam; igid, qoçaq.  Azərbaycan dilinin izahlı lüğəti "
+    },
+    {
+        "word": "abreviasiya",
+        "type": "isim",
+        "origin": "",
+        "explanation": "Dilçilik.Abreviaturanın yaranması prosesi.  Azərbaycan dilinin izahlı lüğəti "
+    }
+]

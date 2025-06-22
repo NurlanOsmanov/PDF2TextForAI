@@ -33,8 +33,6 @@ for contour in contours:
             cv2.rectangle(image, (x, y), (x+w, y+h), (255, 255, 255), -1)  # Beyazla doldur
 '''
 
-# Sonucu kaydet veya göster
-
 def ConverToMatlike(image: PIL.Image): 
     opencv_image = np.array(image)
     opencv_image = cv2.cvtColor(opencv_image, cv2.COLOR_RGB2BGR)
@@ -63,7 +61,6 @@ def MakeBinary(image: cv2.typing.MatLike, threshold: int=250):
 
 
 def ClearBoxes(image: cv2.typing.MatLike, name: str, accuracity_x: int = 50,  accuracity_y: int= 50, repate: bool=False, doBinary: bool = False, treshHold: int = 250):
-    
     try:
         if(doBinary):
             opencv_image = MakeBinary(image, treshHold)
@@ -73,13 +70,8 @@ def ClearBoxes(image: cv2.typing.MatLike, name: str, accuracity_x: int = 50,  ac
         opencv_image = image
         gray = opencv_image
 
-
-    # Kenarları belirlemek için Canny Edge Detection kullan
     edges = cv2.Canny(gray, 150, 200)
-    # i=datetime.now().microsecond
-    # print(i)
-    # cv2.imwrite(f"PNGs/az_tarixi_6_edge{i}.png", edges)
-    # Konturları bul
+
     contours, _ = cv2.findContours(edges, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
 
     for contour in contours:

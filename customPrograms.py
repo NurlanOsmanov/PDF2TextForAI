@@ -17,12 +17,10 @@ def TextFormat(text):
             if(lines[i][-1] not in ['.','?','!']): 
                 lines[i] += " "
         if (lines[i][0] in ['*','x']):
-            # Kamalin kodu
+
             continue
         else:
             temp_text += lines[i]
-        print(lines[i])
-    print("-------------------------------------------------\n" + temp_text)
     return temp_text
     
 def FindTopic(text):

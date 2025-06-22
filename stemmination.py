@@ -31,21 +31,18 @@ def Remove_Suffix(word, suffix_enum):
 
 #------------------------------------------------------------------
 
-with open("DATAS/lemmas.json", "r",encoding="utf8") as file:
+with open("lemmas.json", "r",encoding="utf8") as file:
     fullData = js.loads(file.read(), object_hook=lambda d: dc.dictionary(**d))
     
 
 
-unique_dict = {}
+roots = []
 
 for i in fullData:
     word = Remove_Suffix(i, dc.LexicalSuffix)
-    if word not in unique_dict:
-        unique_dict[word] = word
+    roots.append(word)
 
-lemmas = list(unique_dict.values()) 
-
-with open("DATAS/roots.json", "w",encoding="utf8") as file:
-    js.dump(lemmas, file, ensure_ascii=False, indent=4)
+with open("roots.json", "w",encoding="utf8") as file:
+    js.dump(roots, file, ensure_ascii=False, indent=4)
 
     

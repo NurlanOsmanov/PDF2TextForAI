@@ -120,6 +120,7 @@ class GrammaticalSuffix(Enum):
     maq1 = "mək"
     lar0 = "lar"
     lar1 = "lər"
+    #---davam edir----
     in0 = "ın"
     in1 = "in"
     in2 = "un"
@@ -146,5 +147,9 @@ class GrammaticalSuffix(Enum):
     n0 = "n"
     m0 = "m"
     s0 = "s"
+    dir0 = "dir"
+    dir1 = "dır"    
+    dir2 = "dur"
+    dir3 = "dür"
 
     
